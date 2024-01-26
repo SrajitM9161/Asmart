@@ -1,9 +1,10 @@
 import React from 'react'
 import "../CSS/NavBar.css"
+import Wheather from '../Wheather/Wheather'
 const NavBar = () => {
   return (
     <>
-      <h1>hii</h1>
+      <Wheather/>
     </>
   )
 }

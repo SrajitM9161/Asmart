@@ -1,0 +1,45 @@
+/* Original styles */
+
+.Header {
+    /* Your existing styles */
+  }
+  
+  .Child-Nav {
+    /* Your existing styles */
+  }
+  
+  /* Responsive styles */
+  
+  @media screen and (max-width: 768px) {
+    .Child-Nav {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .nm1 {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      width: 100%;
+      position: absolute;
+      top: 70px;
+      left: -100%;
+      opacity: 1;
+      transition: all 0.5s ease;
+    }
+  
+    .nm1.active {
+      left: 0;
+    }
+  
+    .nm1 a {
+      padding: 15px;
+      width: 100%;
+      display: table;
+    }
+  
+    .icon {
+      display: none;
+    }
+  }
+  
