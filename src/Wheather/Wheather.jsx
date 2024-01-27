@@ -1,31 +1,56 @@
-import { useState, useEffect } from 'react';
-import axios, { Axios } from 'axios';
-
-const Api = 'https://api.openweathermap.org/data/3.0/onecall?';
-const Api_key = '2fd78c2d78cf482962ad6675405386c1'; 
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const Weather = () => {
-  const [latitude, setLatitude] = useState('');
-  const [longitude, setLongitude] = useState('');
+  const [emoji, setEmoji] = useState('');
+  const [minTemp, setMinTemp] = useState(null);
+  const [maxTemp, setMaxTemp] = useState(null);
 
   useEffect(() => {
-    navigator.geolocation.getCurrentPosition((position) => {
-      setLatitude(position.coords.latitude);
-      setLongitude(position.coords.longitude);
-     let data=`${Api}lat=${latitude}&lon=${longitude}&exclude=hourly,daily&appid=${Api_key}`
-     axios.get(data)
-        .then((response) => {
-          console.log(response.data);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
-    });
+   
+    const getGeolocation = () => {
+      if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(
+          (position) => {
+            const { latitude, longitude } = position.coords;
+            const apiKey = 'af49e26b89e9c7dfd06a72bd288021b2';
+            const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}`;
+
+         
+            axios.get(apiUrl)
+              .then(response => {
+                const iconCode = response.data.weather[0].icon;
+                const iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
+                setEmoji(iconUrl);
+                const minTemperature = response.data.main.temp_min;
+                const maxTemperature = response.data.main.temp_max;
+                setMinTemp(Math.round(minTemperature - 273.15)); 
+                setMaxTemp(Math.round(maxTemperature - 273.15));
+              })
+              .catch(error => {
+                console.error('Error fetching weather data:', error);
+                console.error('Response:', error.response);
+              });
+          },
+          (error) => {
+            console.error('Error getting geolocation:', error);
+          }
+        );
+      } else {
+        console.error('Geolocation is not supported by this browser.');
+      }
+    };
+    getGeolocation();
   }, []);
 
   return (
-    <div>
-      {/* Add your weather component rendering logic here */}
+    <div className="weather-info">
+      {emoji && <img src={emoji} alt="Weather Icon" />}
+      {minTemp !== null && maxTemp !== null && (
+        <p>
+          Min {minTemp}°C, Max {maxTemp}°C
+        </p>
+      )}
     </div>
   );
 };

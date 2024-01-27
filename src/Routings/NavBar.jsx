@@ -30,7 +30,7 @@ const NavBar = () => {
       <div className="logos">  
         <img src="src\assets\LogoAg.png" alt='logo'></img>
         <h2>AGRISMART</h2>
-        {/* Weather component here alongside Logo */}
+  
         <Weather/>
       </div>
 
