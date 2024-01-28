@@ -95,7 +95,7 @@
   margin: 0 10px;
 }
 
- h3:hover{
+ .menu h3:hover{
   text-decoration: underline yellow 3px;
   transform: scale(1.2);
   transition: 0.3s;
@@ -174,7 +174,7 @@
     padding-left: 20px;
     align-items: center;
   }    
-
+ 
 
   .btnComp{ 
     font-size: medium;
