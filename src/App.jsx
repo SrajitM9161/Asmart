@@ -5,13 +5,14 @@ import Price from'./Components/Price'
 import Cart from'./Components/Cart'
 import Trade from'./Components/Trade'
 import Contact from './Components/Contact'
+import Login from './Components/Login'
 import {BrowserRouter, Routes,Route} from 'react-router-dom'
 
 const App = () => {
   return (
     <>
     <BrowserRouter>
-    <NavBar/>
+    {/* <NavBar/>  */}
  
      <Routes>
 <Route path='/' element={<Home/>}></Route>
@@ -19,6 +20,7 @@ const App = () => {
 <Route path='/price' element={<Price/>}></Route>
 <Route path='/cart' element={<Cart/>}></Route>
 <Route path='/contact' element={<Contact/>}></Route>
+<Route path='/login' element={<Login/>}></Route>
      </Routes>
      </BrowserRouter>
     </>

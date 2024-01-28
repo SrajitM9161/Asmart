@@ -1,0 +1,166 @@
+.login{
+    background-color: palegoldenrod;
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+}
+
+/* ------------------- left half --------------------- */
+
+.leftHalf{
+background-color: white;
+width: 50%;
+}
+
+.greetLogin{
+    color: rgb(24, 88, 24);
+}
+
+.loginArea{
+    /* width: 80%; */
+    /* background-color: rgb(159, 199, 177); */
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+}
+
+/* .----------------- select user or admin --------------- */
+.userSelect{
+    border: solid;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 35%;
+    border-radius: 15px;
+}
+
+.user ,.adminUser{
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+.userSelect button{
+    background-color: white;
+    border-radius: 15px;
+    border: none;
+}
+.userSelect button:hover{
+    cursor: pointer;
+}
+
+.actives button{           
+    background-color: darkgreen;     
+    color: white;
+    border: none;
+}
+
+/* ------------- Actual username and password space ------*/
+
+.loginForm{
+    padding-top: 10px;
+}
+.loginForm p{
+    margin: 0;
+    padding-bottom: 5px;
+}
+.loginForm input{
+    border: none;
+    border-bottom: solid;
+}
+.loginForm input:focus{
+  outline: none;
+}
+.names,.pw,.showPw{
+    padding-top: 10px;
+}
+.showPw label:hover, .showPw input:hover{
+    cursor: pointer;
+}
+
+.forgetPw{
+    padding-top: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+    align-items: center;
+}
+.forgetPw button{
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+.forgetPw button:hover{
+    cursor: pointer;
+}
+.forgetPw a{
+    color: green;
+    text-decoration:underline;
+}
+
+.loginGoogle img{
+    width: 2vw;
+    padding: 4px;
+    padding-bottom: 0;
+}
+
+.signup p{
+    margin-top: 0;
+    font-size: large;
+    color: green;
+}
+
+.signup a{
+    color: rgb(21, 50, 21);
+    font-weight: 700;
+}
+
+/* ------------------- right half --------------------- */
+.rightHalf{
+background-color: rgb(52, 123, 52);
+width: 50%;
+border: 1px solid;
+display: flex;
+flex-direction: column;
+justify-content: space-around;
+color: white;
+animation: glow 2s infinite; 
+}
+
+.cross{
+    position: fixed;
+    right: 30px;
+    top: 5px;
+    background-color: rgb(52, 123, 52);
+    border: none;
+    color: white;
+    font-size: 5vh;
+}
+.name2{
+text-align: center;
+}
+
+.imgFarm{
+    position: relative;
+    right: 60px;
+}
+
+.rightHalf img{
+    width: 90%;
+    height: 350px;
+}
+
+
+/* For right half glow */
+@keyframes glow {
+    0% {
+      text-shadow: 0 0 5px #a1a9a1, 0 0 10px #b2c4b2, 0 0 15px #cfdecf;
+    }
+    50% {
+      text-shadow: 0 0 10px #c5d3c5, 0 0 20px #889488, 0 0 30px #aab7aa;
+    }
+    100% {
+      text-shadow: 0 0 5px #c3ccc3, 0 0 10px #b3c3b3, 0 0 15px #b2c1b2;
+    }
+  }
