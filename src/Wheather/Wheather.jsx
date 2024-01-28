@@ -24,10 +24,11 @@ const Weather = () => {
 
                 const minTemperature = response.data.main.temp_min;
                 const maxTemperature = response.data.main.temp_max;
+                
                 setMinTemp(Math.round(minTemperature - 273.15)); 
                 setMaxTemp(Math.round(maxTemperature - 273.15));
 
-                // Extract city and country directly from OpenWeatherMap API response
+                
                 const city = response.data.name || '';
                 const country = response.data.sys.country || '';
 
@@ -39,11 +40,11 @@ const Weather = () => {
               });
           },
           (error) => {
-            console.error('Error getting geolocation:', error);
+            alert('please confirm the location', error);
           }
         );
       } else {
-        console.error('Geolocation is not supported by this browser.');
+        alert('please confirm the location .');
       }
     };
 
@@ -61,7 +62,7 @@ const Weather = () => {
         <p>
           Min {minTemp}°C, Max {maxTemp}°C
         </p>
-      )}
+      )} 
     </div>
   );
 };
