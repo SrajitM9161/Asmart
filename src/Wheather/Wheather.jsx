@@ -41,11 +41,11 @@ const Weather = () => {
               });
           },
           (error) => {
-            alert('please confirm the location', error);
+            alert('Please confirm the location', error);
           }
         );
       } else {
-        alert('please confirm the location .');
+        alert('Please confirm the location .');
       }
     };
 
