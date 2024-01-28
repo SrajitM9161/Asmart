@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import API from '../API/oneCall_Api.config';
+import '../CSS/Wheather.css';
 
 const Weather = () => {
   const [emoji, setEmoji] = useState('');
