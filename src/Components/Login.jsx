@@ -5,14 +5,41 @@ import { useState } from "react";
 
 const Login = ()=>{
 
-   const [actives,setActives] = useState(true);
-   function toggleActiveUser(){
+    // useState use krenge for handling inputs like id , pw
+    const [actives,setActives] = useState(true);
+    const [emails,setEmails]=useState("");
+    const [passwords,setPasswords]=useState("");
+    const [showPw,setShowPw]=useState(false);
+
+    // function to switch between user and admin
+    function toggleActiveUser(){
         actives?"":setActives(true);
-   }
-   function toggleActiveAdmin(){
-    actives?setActives(false):"";
-}
-       
+    }
+    function toggleActiveAdmin(){
+        actives?setActives(false):"";
+    }
+
+    // function to handle/storing user input using useState
+    function handleEmailChange(e){
+        setEmails(e.target.value);
+    }    
+    function handlePasswordChange(e){
+        setPasswords(e.target.value)
+    }
+
+    // function to handle Login click *MAIN FUNCTION   
+    function handleLogin(e){
+        e.preventDefault();
+        alert("You entered \nUsername:"+emails+"\nPassword:"+passwords);
+    }
+    
+
+    // function for show pw
+    function showPass(){
+        showPw?setShowPw('false'):setShowPw('true');
+    }
+    // showpw
+
     return (
         <div className="login">
             {/* left half with actual login form */}
@@ -35,27 +62,27 @@ const Login = ()=>{
 
                     </div>
 
-                    <div className="loginForm">
+                    <form onSubmit={handleLogin} className="loginForm">
                         <div className="names">
                             <strong>Username</strong>
-                            <p>👨<input type="text" name="" id="" placeholder="Type your name here" /></p>
+                            <p>👨<input value={emails} onChange={handleEmailChange} type="text" name="" id="" placeholder="Type your name here" /></p>
                         </div>
                         <div className="pw">
                             <strong>Password</strong>
-                            <p>🔒<input type="password" name="" id="" placeholder="Type your password here" /></p>
+                            <p>🔒<input value={passwords} onChange={handlePasswordChange} type="password" name="" id="" placeholder="Type your password here" /></p>
                         </div>
 
-                        <div className="showPw">
-                            <input type="checkbox" name="" id="shows" />
+                        <div onClick={showPass} className="showPw">
+                            <input type="checkbox" name="" className="showss" id="shows" />
                             <label htmlFor="shows"><strong>Show password</strong></label>
                         </div>
 
                         <div className="forgetPw">
-                            <button>Login</button>
+                            <button type="submit">Login</button>
                             <a href="">Forgot Password?</a>
                         </div>
 
-                    </div>
+                    </form>
 
                     <div className="loginGoogle">
                         <p>Login with <a href=""><img src="https://cdn-icons-png.flaticon.com/128/2335/2335397.png" alt="" /></a> <a href=""><img src="https://cdn-icons-png.flaticon.com/128/3955/3955011.png" alt="" /></a> <a href=""><img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" alt="" /></a></p>
