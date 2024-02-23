@@ -7,19 +7,23 @@ const Login = ()=>{
 
     // useState use krenge for handling inputs like id , pw
     const [actives,setActives] = useState(true);
+    const [fullName,setFullName]=useState("");
     const [emails,setEmails]=useState("");
     const [passwords,setPasswords]=useState("");
     const [showPw,setShowPw]=useState(false);
 
     // function to switch between user and admin
-    function toggleActiveUser(){
-        actives?"":setActives(true);
-    }
-    function toggleActiveAdmin(){
-        actives?setActives(false):"";
-    }
+    // function toggleActiveUser(){
+    //     actives?"":setActives(true);
+    // }
+    // function toggleActiveAdmin(){
+    //     actives?setActives(false):"";
+    // }
 
     // function to handle/storing user input using useState
+    function handleFullNameChange(e){
+        setFullName(e.target.value);
+    }    
     function handleEmailChange(e){
         setEmails(e.target.value);
     }    
@@ -30,7 +34,7 @@ const Login = ()=>{
     // function to handle Login click *MAIN FUNCTION   
     function handleLogin(e){
         e.preventDefault();
-        alert("You entered \nUsername:"+emails+"\nPassword:"+passwords);
+        alert("You entered \nFull Name :"+fullName+"\nEmail:"+emails+"\nPassword:"+passwords);
     }
     
 
@@ -54,20 +58,25 @@ const Login = ()=>{
                     <div className="userSelect">
                         {/* Toggle the 'active' class for CSS of current user(admin or user) */}
                         {/* 'active' class set for user by default */}
-                        <div className={`user ${actives?'actives':''}`}>
+                        {/* <div className={`user ${actives?'actives':''}`}>
                             <button onClick={toggleActiveUser}><h3>User Login</h3></button>
                         </div>
 
                         <div className={`adminUser ${!actives?'actives':''}`}>
                             <button onClick={toggleActiveAdmin}><h3>Admin Login</h3></button>
-                        </div>
+                        </div> */}
+                        <h3>Create your account</h3>
 
                     </div>
 
                     <form onSubmit={handleLogin} className="loginForm">
                         <div className="names">
-                            <strong>Username</strong>
-                            <p>👨<input value={emails} onChange={handleEmailChange} type="text" name="" id="" placeholder="Type your name here" /></p>
+                            <strong>Full Name</strong>
+                            <p>👨<input value={fullName} onChange={handleFullNameChange} type="text" name="" id="" placeholder="Type your name here" /></p>
+                        </div>
+                        <div className="names">
+                            <strong>Email</strong>
+                            <p>✉️<input value={emails} onChange={handleEmailChange} type="email" name="" id="" placeholder="Type your email here" /></p>
                         </div>
                         <div className="pw">
                             <strong>Password</strong>
@@ -80,8 +89,7 @@ const Login = ()=>{
                         </div>
 
                         <div className="forgetPw">
-                            <button type="submit">Login</button>
-                            <a href="">Forgot Password?</a>
+                            <button type="submit">Create account</button>
                         </div>
 
                     </form>
@@ -91,7 +99,7 @@ const Login = ()=>{
                     </div>
 
                     <div className="signup">
-                        <p>Don't have an account? <Link to="/signup"> <h3>Sign up</h3></Link> </p>
+                        <p>Already have an account? <Link to="/login"> <h3>Login</h3></Link> </p>
 
 
                     </div>

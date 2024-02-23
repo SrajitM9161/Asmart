@@ -116,6 +116,11 @@ width: 50%;
     font-weight: 700;
 }
 
+.signup h3{
+    display: inline;
+    font-size: large;
+}
+
 /* ------------------- right half --------------------- */
 .rightHalf{
 background-color: rgb(52, 123, 52);
