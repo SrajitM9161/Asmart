@@ -5,8 +5,7 @@ import '../CSS/Wheather.css';
 
 const Weather = () => {
   const [emoji, setEmoji] = useState('');
-  const [minTemp, setMinTemp] = useState(null);
-  const [maxTemp, setMaxTemp] = useState(null);
+  const [temperature, setTemperature] = useState(null);
   const [location, setLocation] = useState({ city: '', country: '' });
 
   useEffect(() => {
@@ -23,13 +22,9 @@ const Weather = () => {
                 const iconUrl = `https://openweathermap.org/img/w/${iconCode}.png`;
                 setEmoji(iconUrl);
 
-                const minTemperature = response.data.main.temp_min;
-                const maxTemperature = response.data.main.temp_max;
-                
-                setMinTemp(Math.round(minTemperature - 273.15)); 
-                setMaxTemp(Math.round(maxTemperature - 273.15));
+                const currentTemperature = response.data.main.temp;
+                setTemperature(Math.round(currentTemperature - 273.15));
 
-                
                 const city = response.data.name || '';
                 const country = response.data.sys.country || '';
 
@@ -55,15 +50,12 @@ const Weather = () => {
   return (
     <div className="weather-info">
       <div className="location">
-
         <p>{`${location.city}, ${location.country}`}</p>
       </div>
       {emoji && <img src={emoji} alt="Weather Icon" />}
-      {minTemp !== null && maxTemp !== null && (
-        <p>
-          Min {minTemp}°C, Max {maxTemp}°C
-        </p>
-      )} 
+      {temperature !== null && (
+        <p> {temperature}°C</p>
+      )}
     </div>
   );
 };
