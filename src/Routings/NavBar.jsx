@@ -45,7 +45,7 @@ const NavBar = () => {
         <Link to="/trade"><h3>Trade</h3></Link>
         <Link to="/price"> <h3>Price</h3></Link>
         <Link to="/cart"><h3>Cart</h3></Link>
-        <Link to="/login"><button className="btnComp"><h3>Login</h3></button></Link>
+        <Link to="/"><button className="btnComp"><h3>Login</h3></button></Link>
         </div>
 
       </div> 
