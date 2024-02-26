@@ -54,7 +54,7 @@ const Weather = () => {
       </div>
       {emoji && <img src={emoji} alt="Weather Icon" />}
       {temperature !== null && (
-        <p> {temperature}°C</p>
+        <p> {temperature} °C</p>
       )}
     </div>
   );
