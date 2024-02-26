@@ -31,7 +31,25 @@ const Login = ()=>{
     function handleLogin(e){
         e.preventDefault();
         alert("You entered \nUsername:"+emails+"\nPassword:"+passwords);
-    }
+        fetch("http://localhost:3737/register",{
+            method:"POST",
+            crossDomain:true,
+            headers:{
+                "Content-Type":"application/json",
+                Accept:"application/json",
+                "Access-Control-Allow-Origin":"*",
+            },
+            body:JSON.stringify({
+                // fname:names,
+                email:emails,
+                password:passwords
+            }),
+        }).then((res)=>res.json())
+        .then((data)=>{
+            console.log(data,"userRegister");
+        })         
+        }
+    
     
 
     // function for show pw
