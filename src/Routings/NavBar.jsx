@@ -8,7 +8,6 @@ const NavBar = () => {
 
   const [isMobile, setIsMobile] = useState(false);
   const [sign, setSign] = useState("signup");
-  const [arrow, setArrow] = useState("👇");
 
   const toggleMobileNav = () => {
     setIsMobile(!isMobile);
@@ -16,11 +15,6 @@ const NavBar = () => {
       setSign("sign");
     } else {
       setSign("signup");
-    }
-    if (arrow == "👇") {
-      setArrow("👆");
-    } else {
-      setArrow("👇")
     }
   };
 
@@ -31,22 +25,22 @@ const NavBar = () => {
         <img src="src\assets\LogoAg.png" alt='logo'></img>
         <h2>AGRISMART</h2>
   
-        <Weather/>
+        <Weather className='weather-info'/>
       </div>
 
       <div className="right-nav">
 
-        <button className="mobile-menu-button" onClick={toggleMobileNav}>
-          <h2 className='arrow'>{arrow}</h2>
-        </button>
-
         <div className={`menu ${isMobile ? 'open' : 'close'}`}>
-        <Link to="/"><h3>Home</h3></Link>
-        <Link to="/trade"><h3>Trade</h3></Link>
-        <Link to="/price"> <h3>Price</h3></Link>
-        <Link to="/cart"><h3>Cart</h3></Link>
+        <Link className='menu-opt' to="/">Home</Link>
+        <Link className='menu-opt' to="/trade">Trade</Link>
+        <Link className='menu-opt' to="/price">Price</Link>
+        <Link className='menu-opt' to="/cart">Soil Detction</Link>
         <Link to="/"><button className="btnComp"><h3>Login</h3></button></Link>
         </div>
+
+        <button className="mobile-menu-button" onClick={toggleMobileNav}>
+          <div className='arrow'>☰</div>
+        </button>
 
       </div> 
 
