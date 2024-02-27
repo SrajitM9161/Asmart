@@ -49,13 +49,13 @@ const Weather = () => {
 
   return (
     <div className="weather-info">
-      <div className="location">
-        <p>{`${location.city}, ${location.country}`}</p>
+      <div>
+        <div className="location">
+          <div>{`${location.city}`}</div>
+        </div>
+        {temperature !== null && (<div>{temperature} °C</div>)}
       </div>
-      {emoji && <img src={emoji} alt="Weather Icon" />}
-      {temperature !== null && (
-        <p> {temperature} °C</p>
-      )}
+      <div>{emoji && <img src={emoji} alt="Weather Icon" />}</div>
     </div>
   );
 };
