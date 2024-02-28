@@ -35,15 +35,15 @@ const NavBar = () => {
 
         <div className={`menu ${isMobile ? 'open' : 'close'}`}>
           
-          <Link className='menu-opt' to="/">Home</Link>
+          <Link to="/">Home</Link>
           <hr className='menu-opt-hr'/>
-          <Link className='menu-opt' to="/trade">Trade</Link>
+          <Link to="/trade">Trade</Link>
           <hr className='menu-opt-hr'/>
-          <Link className='menu-opt' to="/price">Price</Link>
+          <Link to="/price">Price</Link>
           <hr className='menu-opt-hr'/>
-          <Link className='menu-opt' to="/cart">Soil Detction</Link>
+          <Link to="/cart">Soil Detction</Link>
           <hr className='menu-opt-hr'/>
-          <Link to="/"><button className="btnComp">Login</button></Link>
+          <Link className='menu-btnComp' to="/"><button className="btnComp">Login</button></Link>
 
         </div>
 
