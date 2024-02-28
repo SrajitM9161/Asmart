@@ -21,28 +21,37 @@ const NavBar = () => {
   return (
     <div className={`navbar ${isMobile ? 'mobile' : ''}`}>
 
-      <div className="logos">  
+      <div className="logos">
         <img src="src\assets\LogoAg.png" alt='logo'></img>
         <h2>AGRISMART</h2>
-  
-        <Weather className='weather-info'/>
+
+        <div className='weather-info'>
+          <Weather />
+        </div>
+
       </div>
 
       <div className="right-nav">
 
         <div className={`menu ${isMobile ? 'open' : 'close'}`}>
-        <Link className='menu-opt' to="/">Home</Link>
-        <Link className='menu-opt' to="/trade">Trade</Link>
-        <Link className='menu-opt' to="/price">Price</Link>
-        <Link className='menu-opt' to="/cart">Soil Detction</Link>
-        <Link to="/"><button className="btnComp"><h3>Login</h3></button></Link>
+          
+          <Link to="/">Home</Link>
+          <hr className='menu-opt-hr'/>
+          <Link to="/trade">Trade</Link>
+          <hr className='menu-opt-hr'/>
+          <Link to="/price">Price</Link>
+          <hr className='menu-opt-hr'/>
+          <Link to="/cart">Soil Detction</Link>
+          <hr className='menu-opt-hr'/>
+          <Link className='menu-btnComp' to="/"><button className="btnComp">Login</button></Link>
+
         </div>
 
         <button className="mobile-menu-button" onClick={toggleMobileNav}>
           <div className='arrow'>☰</div>
         </button>
 
-      </div> 
+      </div>
 
     </div>
 
