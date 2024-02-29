@@ -135,12 +135,17 @@ animation: glow 2s infinite;
 
 .cross{
     position: fixed;
-    right: 30px;
-    top: 5px;
+    right: 10px;
+    top: 10px;
     background-color: rgb(52, 123, 52);
+    /* height: 10px; */
     border: none;
     color: white;
-    font-size: 5vh;
+    font-size: 3vh;
+    cursor: pointer;
+}
+.cross p{
+    margin: 0;
 }
 .name2{
 text-align: center;

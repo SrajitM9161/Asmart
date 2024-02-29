@@ -109,7 +109,7 @@ const Login = ()=>{
             {/* right half with image */}
             <div className="rightHalf">
 
-                <Link to="/"><button className="cross"><h3>X</h3></button></Link>
+                <Link to="/"><button className="cross"><p>X</p></button></Link>
 
                 <div className="name2">
                     <h2>AGRISMART</h2>
