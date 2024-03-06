@@ -2,7 +2,7 @@ import React from 'react';
 import "../CSS/Home.css";
 import Ig from "../assets/photo1.png";
 import Card from '../Components/Card';
-import Footer from '../Components/Footer';
+// import Footer from '../Components/Footer';
 const Home = () => {
   return (
     <>
@@ -15,7 +15,7 @@ const Home = () => {
         <h3>Want to do barganing?</h3>
       </div>
       <Card/>
-      <Footer/>
+      {/* <Footer/> */}
     </>
   );
 }
