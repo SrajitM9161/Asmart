@@ -1,11 +1,10 @@
-import React from 'react';
-import PAPI from '../PriceAPI/PAPI';
-import '../CSS/Price.css';
-
+import React from 'react'
+import PAPI from '../PriceAPI/PAPI'
 const Price = () => {
   return (
-    <div className='container' id='container'>
-      <PAPI />
+    <div>
+    <PAPI/>
+      
     </div>
   );
 };

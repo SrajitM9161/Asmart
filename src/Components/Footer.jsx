@@ -1,7 +1,10 @@
 import React from 'react';
 import '../CSS/Footer.css'
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
+import GoogleIcon from '@mui/icons-material/Google';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import FacebookIcon from '@mui/icons-material/Facebook';
 function Footer() {
   return (
     <footer>
@@ -10,43 +13,23 @@ function Footer() {
       <h2>AGRISMART</h2>
             
       </div>
-      {/* <div>
-      <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/google">
-                <GoogleLogo />
-              </Link>
-            </li>
-            <li>
-              <Link to="/instagram">
-                <InstagramLogo />
-              </Link>
-            </li>
-            <li>
-              <Link to="/youtube">
-                <YouTubeLogo />
-              </Link>
-            </li>
-          </ul>
-        </nav>
-
-        <Switch>
-          <Route path="/google">
-            <h1>Google Page</h1>
-          </Route>
-          <Route path="/instagram">
-            <h1>Instagram Page</h1>
-          </Route>
-          <Route path="/youtube">
-            <h1>YouTube Page</h1>
-          </Route>
-        </Switch>
+      <div className='Icon-css'>
+      <GoogleIcon style={{ fontSize: '36px' }} />
+      <InstagramIcon style={{ fontSize: '36px' }}/>
+      <FacebookIcon style={{ fontSize: '36px' }}/>
+      <TwitterIcon style={{ fontSize: '36px' }}/>
+      <YouTubeIcon style={{ fontSize: '36px' }}/>
       </div>
-    </Router>
-      </div> */}
+      <div className='foottext-css'>
+        <p>Home</p>
+        <p>News</p>
+        <p>About us</p>
+        <p>Contact us</p>
+        <p>Our Team</p>
+      </div>
+      <div className='footlast-css'>
+        <p>Copyright ©️ 2024, Designed by team Devfriends</p>
+      </div>
           </div>
     </footer>
   );
