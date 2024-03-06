@@ -1,6 +1,8 @@
+// PAPI.jsx
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../CSS/Papi.css';
+import Pi from "../assets/photo7.png"
 
 const PAPI = () => {
     const [records, setRecords] = useState([]);
@@ -13,13 +15,12 @@ const PAPI = () => {
     const [markets, setMarkets] = useState([]);
 
     useEffect(() => {
-        axios.get("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=ENTER_API_KEY&format=json&limit=10000")
+        axios.get("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd00000107640ee53c3249cd401d55a7bfcaae75&format=json&limit=10000")
             .then(response => {
                 const data = response.data.records;
                 setRecords(data);
                 const uniqueStates = Array.from(new Set(data.map(record => record.state)));
                 setStates(uniqueStates);
-                console.log(response);
             })
             .catch(error => alert('Error fetching data:', error));
     }, []);
@@ -70,7 +71,13 @@ const PAPI = () => {
 
     return (
         <>
-            <div>
+        <div className='papi-imag'>
+            <img src={Pi} alt="Image" />
+            <div className='dark-papi'></div>
+        </div>
+        <div className='container'>
+            <h1 className='title'>Want to know the price?</h1>
+            <div className="select-container">
                 <label htmlFor="state">Select State:</label>
                 <select id="state" value={selectedState} onChange={handleStateChange}>
                     <option value="">Select State</option>
@@ -79,7 +86,7 @@ const PAPI = () => {
                     ))}
                 </select>
             </div>
-            <div>
+            <div className="select-container">
                 <label htmlFor="district">Select District:</label>
                 <select id="district" value={selectedDistrict} onChange={handleDistrictChange}>
                     <option value="">Select District</option>
@@ -88,7 +95,7 @@ const PAPI = () => {
                     ))}
                 </select>
             </div>
-            <div>
+            <div className="select-container">
                 <label htmlFor="market">Select Market:</label>
                 <select id="market" value={selectedMarket} onChange={handleMarketChange}>
                     <option value="">Select Market</option>
@@ -97,6 +104,7 @@ const PAPI = () => {
                     ))}
                 </select>
             </div>
+            {/* Table */}
             {selectedState === "" || selectedDistrict === "" || selectedMarket === "" ? (
                 <div>Please select your state, district, and market.</div>
             ) : (
@@ -104,7 +112,7 @@ const PAPI = () => {
                     {filteredRecords.length > 0 ? (
                         <div>
                             <h2>Filtered Records:</h2>
-                            <table>
+                            <table id="records-table">
                                 <thead>
                                     <tr>
                                         <th>Commodity</th>
@@ -134,6 +142,7 @@ const PAPI = () => {
                     )}
                 </>
             )}
+        </div>
         </>
     );
 }

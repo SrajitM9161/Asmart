@@ -10,7 +10,7 @@ function Footer() {
       <h2>AGRISMART</h2>
             
       </div>
-      <div>
+      {/* <div>
       <Router>
       <div>
         <nav>
@@ -46,7 +46,7 @@ function Footer() {
         </Switch>
       </div>
     </Router>
-      </div>
+      </div> */}
           </div>
     </footer>
   );
