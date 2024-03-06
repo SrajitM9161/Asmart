@@ -6,10 +6,34 @@
 }
 .con_footer{
     color: #f9f5f5;
-    padding-bottom: 20px;
     font-family: sans-serif;
-    font-size: large;
+    font-size: x-large;
     text-align: center;
+
+}
+.Icon-css{
+    padding-left: 500px;
+    justify-content: space-between;
+    display: flex;
+    margin-right: 500px;
+    color: #E8B042;
+    
+}
+.foottext-css{
+    display: flex;
+    justify-content: space-between;
+    padding-right: 400px;
+    padding-left: 400px;
+    font-family: sans-serif;
+    font-size: x-large;
+    padding-bottom: 30px;
+}
+.footlast-css{
+    display: flex;
+    padding-left: 550px;
+    font-family:'Times New Roman', Times, serif ;
+    font-size: large;
+    background-color: #E8B042;
 
 }
 
@@ -19,8 +43,4 @@
         padding-top: 10px;
         padding-bottom: 10px;
      }
-
-
-
-
 }
