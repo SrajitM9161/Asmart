@@ -6,16 +6,22 @@ const PAPI = () => {
     const [records, setRecords] = useState([]);
     const [selectedState, setSelectedState] = useState("");
     const [selectedDistrict, setSelectedDistrict] = useState("");
+    const [selectedMarket, setSelectedMarket] = useState("");
     const [filteredRecords, setFilteredRecords] = useState([]);
     const [states, setStates] = useState([]);
     const [districts, setDistricts] = useState([]);
+    const [markets, setMarkets] = useState([]);
 
     useEffect(() => {
+<<<<<<< HEAD
 <<<<<<< HEAD
         axios.get("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=YOURKEYHERE&format=json&limit=2000")
 =======
         axios.get("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=ENTER_API_KEY&format=json&limit=6000")
 >>>>>>> de1313bbc564c579d463aa6f324cb509528c1ed0
+=======
+        axios.get("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=ENTER_API_KEY&format=json&limit=10000")
+>>>>>>> f895f0cc835f6bf2ff6b2246b00324311a968fac
             .then(response => {
                 const data = response.data.records;
                 setRecords(data);
@@ -34,24 +40,40 @@ const PAPI = () => {
     }, [selectedState, records]);
 
     useEffect(() => {
-    
+        if (selectedState && selectedDistrict) {
+            const uniqueMarkets = Array.from(new Set(records.filter(record => record.state === selectedState && record.district === selectedDistrict).map(record => record.market)));
+            setMarkets(uniqueMarkets);
+        }
+    }, [selectedState, selectedDistrict, records]);
+
+    useEffect(() => {
         const filtered = records.filter(record =>
             (!selectedState || record.state === selectedState) &&
-            (!selectedDistrict || record.district === selectedDistrict)
+            (!selectedDistrict || record.district === selectedDistrict) &&
+            (!selectedMarket || record.market === selectedMarket)
         );
         setFilteredRecords(filtered);
-    }, [selectedState, selectedDistrict, records]);
+    }, [selectedState, selectedDistrict, selectedMarket, records]);
 
     const handleStateChange = (event) => {
         const state = event.target.value;
         setSelectedState(state);
         setSelectedDistrict(""); 
+        setSelectedMarket("");
         const uniqueDistricts = Array.from(new Set(records.filter(record => record.state === state).map(record => record.district)));
         setDistricts(uniqueDistricts);
     };
 
     const handleDistrictChange = (event) => {
-        setSelectedDistrict(event.target.value);
+        const district = event.target.value;
+        setSelectedDistrict(district);
+        setSelectedMarket("");
+        const uniqueMarkets = Array.from(new Set(records.filter(record => record.state === selectedState && record.district === district).map(record => record.market)));
+        setMarkets(uniqueMarkets);
+    };
+
+    const handleMarketChange = (event) => {
+        setSelectedMarket(event.target.value);
     };
 
     return (
@@ -74,8 +96,17 @@ const PAPI = () => {
                     ))}
                 </select>
             </div>
-            {selectedState === "" || selectedDistrict === "" ? (
-                <div>Please select your state and district.</div>
+            <div>
+                <label htmlFor="market">Select Market:</label>
+                <select id="market" value={selectedMarket} onChange={handleMarketChange}>
+                    <option value="">Select Market</option>
+                    {markets.map((market, index) => (
+                        <option key={index} value={market}>{market}</option>
+                    ))}
+                </select>
+            </div>
+            {selectedState === "" || selectedDistrict === "" || selectedMarket === "" ? (
+                <div>Please select your state, district, and market.</div>
             ) : (
                 <>
                     {filteredRecords.length > 0 ? (
@@ -107,7 +138,7 @@ const PAPI = () => {
                             </table>
                         </div>
                     ) : (
-                        <div>Select Your State and District</div>
+                        <div>No records found for the selected filters.</div>
                     )}
                 </>
             )}
