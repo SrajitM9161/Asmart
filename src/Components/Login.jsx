@@ -2,6 +2,8 @@ import React from "react";
 import '../CSS/Login.css';
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import {auth} from "../Firebase/config";
+import { signInWithEmailAndPassword } from "firebase/auth";
 
 const Login = ()=>{
 
@@ -27,30 +29,54 @@ const Login = ()=>{
         setPasswords(e.target.value)
     }
 
-    // function to handle Login click *MAIN FUNCTION   
-    function handleLogin(e){
+    // function to handle Login click *MAIN FUNCTION  using MONGO DB (not used, because of firebase) 
+    // function handleLogin(e){
+    //     e.preventDefault();
+    //     alert("You entered \nUsername:"+emails+"\nPassword:"+passwords);
+    //     fetch("http://localhost:3737/register",{
+    //         method:"POST",
+    //         crossDomain:true,
+    //         headers:{
+    //             "Content-Type":"application/json",
+    //             Accept:"application/json",
+    //             "Access-Control-Allow-Origin":"*",
+    //         },
+    //         body:JSON.stringify({
+    //             // fname:names,
+    //             email:emails,
+    //             password:passwords
+    //         }),
+    //     }).then((res)=>res.json())
+    //     .then((data)=>{
+    //         console.log(data,"userRegister");
+    //     })         
+    //     }
+    
+    // Function to check if user exists i.e Registered or not.
+    const handleLogins=async(e)=>{    
         e.preventDefault();
-        alert("You entered \nUsername:"+emails+"\nPassword:"+passwords);
-        fetch("http://localhost:3737/register",{
-            method:"POST",
-            crossDomain:true,
-            headers:{
-                "Content-Type":"application/json",
-                Accept:"application/json",
-                "Access-Control-Allow-Origin":"*",
-            },
-            body:JSON.stringify({
-                // fname:names,
-                email:emails,
-                password:passwords
-            }),
-        }).then((res)=>res.json())
-        .then((data)=>{
-            console.log(data,"userRegister");
-        })         
+        try{
+            // const userCredentials = await signInWithEmailAndPassword(emails,passwords);
+            const userCredentials = await signInWithEmailAndPassword(auth,emails, passwords);
+            const users=userCredentials.user.email;
+            alert("Hello "+users+", Welcome Back");
+        }catch(err){
+            const errCode=err.code;
+            if(errCode=="auth/user-not-found"){
+                console.log(errCode);
+                alert("No user found with this email. Please Sign up");
+            }else if(errCode=="auth/wrong-password"){
+                console.log(errCode);
+                alert("Incorrect password. Please try again");
+            }else if (errCode === 'auth/invalid-credential') {
+                console.log(errCode);
+                alert('Invalid email or password. Please check your credentials.');
+            }
+            else{
+                alert(err);
+            }
         }
-    
-    
+    }
 
     // function for show pw
     function showPass(){
@@ -82,10 +108,10 @@ const Login = ()=>{
 
                     </div>
 
-                    <form onSubmit={handleLogin} className="loginForm">
+                    <form onSubmit={handleLogins} className="loginForm">
                         <div className="names">
                             <strong>Username</strong>
-                            <p>👨<input value={emails} onChange={handleEmailChange} type="text" name="" id="" placeholder="Type your name here" /></p>
+                            <p>👨<input value={emails} onChange={handleEmailChange} type="email" name="" id="" placeholder="Type your email here" /></p>
                         </div>
                         <div className="pw">
                             <strong>Password</strong>
@@ -105,7 +131,8 @@ const Login = ()=>{
                     </form>
 
                     <div className="loginGoogle">
-                        <p>Login with <a href=""><img src="https://cdn-icons-png.flaticon.com/128/2335/2335397.png" alt="" /></a> <a href=""><img src="https://cdn-icons-png.flaticon.com/128/3955/3955011.png" alt="" /></a> <a href=""><img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" alt="" /></a></p>
+                        {/* <p>Login with <a href=""><img src="https://cdn-icons-png.flaticon.com/128/2335/2335397.png" alt="" /></a> <a href=""><img src="https://cdn-icons-png.flaticon.com/128/3955/3955011.png" alt="" /></a> <a href=""><img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" alt="" /></a></p> */}
+                        <p>Login with <button>Google</button></p>
                     </div>
 
                     <div className="signup">

@@ -11,12 +11,13 @@ const PAPI = () => {
     const [districts, setDistricts] = useState([]);
 
     useEffect(() => {
-        axios.get("https://api.data.gov.in/catalog/6141ea17-a69d-4713-b600-0a43c8fd9a6c?api-key=ENTER_API&format=json")
+        axios.get("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=YOURKEYHERE&format=json&limit=2000")
             .then(response => {
                 const data = response.data.records;
                 setRecords(data);
                 const uniqueStates = Array.from(new Set(data.map(record => record.state)));
                 setStates(uniqueStates);
+                console.log(response);
             })
             .catch(error => alert('Error fetching data:', error));
     }, []);

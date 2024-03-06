@@ -12,6 +12,7 @@
   "dependencies": {
     "axios": "^1.6.7",
     "dotenv": "^16.4.1",
+    "firebase": "^10.8.1",
     "react": "^18.2.0",
     "react-3d-icons": "^1.0.2",
     "react-autosuggest": "^10.1.0",
