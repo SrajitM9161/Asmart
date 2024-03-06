@@ -48,10 +48,11 @@
 
 body {
   margin: 0;
+  
 }
 
 .navbar {
-  background-color: #346930;
+  background-color: #184109;
   color: #fff;
   display: flex;
   justify-content: space-between;

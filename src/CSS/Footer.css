@@ -1,0 +1,26 @@
+
+.con_foot{
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.6);
+    background: #184109;
+    padding-top: 10px;
+}
+.con_footer{
+    color: #f9f5f5;
+    padding-bottom: 20px;
+    font-family: sans-serif;
+    font-size: large;
+    text-align: center;
+
+}
+
+@media screen and (max-width:769px){
+     .con_foot{
+        font-size: 10px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+     }
+
+
+
+
+}
