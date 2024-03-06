@@ -11,7 +11,11 @@ const PAPI = () => {
     const [districts, setDistricts] = useState([]);
 
     useEffect(() => {
+<<<<<<< HEAD
         axios.get("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=YOURKEYHERE&format=json&limit=2000")
+=======
+        axios.get("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=ENTER_API_KEY&format=json&limit=6000")
+>>>>>>> de1313bbc564c579d463aa6f324cb509528c1ed0
             .then(response => {
                 const data = response.data.records;
                 setRecords(data);

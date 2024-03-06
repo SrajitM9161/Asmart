@@ -1,9 +1,9 @@
 import React from 'react'
-
+import PAPI from '../PriceAPI/PAPI'
 const Price = () => {
   return (
     <div>
-      price
+    <PAPI/>
       
     </div>
   )
