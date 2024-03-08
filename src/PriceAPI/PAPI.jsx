@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-=======
-
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import '../CSS/Papi.css';
@@ -150,4 +147,3 @@ const PAPI = () => {
 }
 
 export default PAPI;
->>>>>>> 5c7926ace354ac39adf00d541c576ed53a6819ad
