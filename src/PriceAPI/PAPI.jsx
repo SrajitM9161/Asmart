@@ -75,7 +75,7 @@ const PAPI = () => {
             <img src={Pi} alt="Image" />
             <div className='dark-papi'></div>
         </div> */}
-        <div className='.container'>
+        <div className='container'>
             <h1 className='title'>Want to know the price?</h1>
             <div className="select-container">
                 <label htmlFor="state">Select State:</label>
@@ -104,7 +104,7 @@ const PAPI = () => {
                     ))}
                 </select>
             </div>
-            {/* Table */}
+        
             {selectedState === "" || selectedDistrict === "" || selectedMarket === "" ? (
                 <div>Please select your state, district, and market.</div>
             ) : (
