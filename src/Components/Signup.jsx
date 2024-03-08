@@ -2,12 +2,14 @@ import React from "react";
 import '../CSS/Login.css';
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { auth,googleProvider } from "../Firebase/config";
+import {createUserWithEmailAndPassword,signInWithPopup} from "firebase/auth";
 
 const Login = ()=>{
 
     // useState use krenge for handling inputs like id , pw
-    const [actives,setActives] = useState(true);
-    const [fullName,setFullName]=useState("");
+    // const [actives,setActives] = useState(true);
+    // const [fullName,setFullName]=useState("");
     const [emails,setEmails]=useState("");
     const [passwords,setPasswords]=useState("");
     const [showPw,setShowPw]=useState(false);
@@ -21,9 +23,9 @@ const Login = ()=>{
     // }
 
     // function to handle/storing user input using useState
-    function handleFullNameChange(e){
-        setFullName(e.target.value);
-    }    
+    // function handleFullNameChange(e){
+    //     setFullName(e.target.value);
+    // }    
     function handleEmailChange(e){
         setEmails(e.target.value);
     }    
@@ -32,11 +34,25 @@ const Login = ()=>{
     }
 
     // function to handle Login click *MAIN FUNCTION   
-    function handleLogin(e){
+    const handleLogin=async(e)=>{
         e.preventDefault();
-        alert("You entered \nFull Name :"+fullName+"\nEmail:"+emails+"\nPassword:"+passwords);
+        try{
+            await createUserWithEmailAndPassword(auth,emails,passwords);
+            alert("User Registered");
+        }catch(err){
+            alert(err);
+        }
+        
+    };
+
+    const handleGoogleSignup=async()=>{
+        try{
+            await signInWithPopup(auth,googleProvider);
+            alert("Signed Up Successfully");
+        }catch(err){
+            alert(err);
+        }
     }
-    
 
     // function for show pw
     function showPass(){
@@ -70,17 +86,17 @@ const Login = ()=>{
                     </div>
 
                     <form onSubmit={handleLogin} className="loginForm">
-                        <div className="names">
+                        {/* <div className="names">
                             <strong>Full Name</strong>
                             <p>👨<input value={fullName} onChange={handleFullNameChange} type="text" name="" id="" placeholder="Type your name here" /></p>
-                        </div>
+                        </div> */}
                         <div className="names">
                             <strong>Email</strong>
-                            <p>✉️<input value={emails} onChange={handleEmailChange} type="email" name="" id="" placeholder="Type your email here" /></p>
+                            <p>✉️<input value={emails} onChange={handleEmailChange} type="email" required="true" name="" id="" placeholder="Type your email here" /></p>
                         </div>
                         <div className="pw">
                             <strong>Password</strong>
-                            <p>🔒<input value={passwords} onChange={handlePasswordChange} type={showPw?"text":"password"}  name="" id="" placeholder="Type your password here" /></p>
+                            <p>🔒<input value={passwords} onChange={handlePasswordChange} type={showPw?"text":"password"} required="true" name="" id="" placeholder="Type your password here" /></p>
                         </div>
 
                         <div  className="showPw">
@@ -95,7 +111,8 @@ const Login = ()=>{
                     </form>
 
                     <div className="loginGoogle">
-                        <p>Login with <a href=""><img src="https://cdn-icons-png.flaticon.com/128/2335/2335397.png" alt="" /></a> <a href=""><img src="https://cdn-icons-png.flaticon.com/128/3955/3955011.png" alt="" /></a> <a href=""><img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" alt="" /></a></p>
+                        {/* <p>Signup with <a onClick={handleGoogleSignup} href=""><img src="https://cdn-icons-png.flaticon.com/128/2335/2335397.png" alt="" /></a> <a href=""><img src="https://cdn-icons-png.flaticon.com/128/3955/3955011.png" alt="" /></a> <a href=""><img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" alt="" /></a></p> */}
+                        <p>Sign up with <button onClick={handleGoogleSignup}>Google</button></p>
                     </div>
 
                     <div className="signup">
@@ -109,7 +126,7 @@ const Login = ()=>{
             {/* right half with image */}
             <div className="rightHalf">
 
-                <Link to="/"><button className="cross"><h3>X</h3></button></Link>
+                <Link to="/"><button className="cross"><p>X</p></button></Link>
 
                 <div className="name2">
                     <h2>AGRISMART</h2>

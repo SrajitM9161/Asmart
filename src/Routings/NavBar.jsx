@@ -43,7 +43,7 @@ const NavBar = () => {
           <hr className='menu-opt-hr'/>
           <Link to="/cart">Soil Detction</Link>
           <hr className='menu-opt-hr'/>
-          <Link className='menu-btnComp' to="/"><button className="btnComp">Login</button></Link>
+          <Link className='menu-btnComp' to="/login"><button className="btnComp">Login</button></Link>
 
         </div>
 
