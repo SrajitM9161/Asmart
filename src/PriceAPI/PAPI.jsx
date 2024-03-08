@@ -71,10 +71,10 @@ const PAPI = () => {
 
     return (
         <>
-        {/* <div className='papi-imag'>
+        <div className='papi-imag'>
             <img src={Pi} alt="Image" />
             <div className='dark-papi'></div>
-        </div> */}
+        </div>
         <div className='container'>
             <h1 className='title'>Want to know the price?</h1>
             <div className="select-container">
