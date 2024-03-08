@@ -1,9 +1,9 @@
-.image {
+.imag {
     position: relative;
     width: 100%; 
   }
   
-  .image img {
+  .imag img {
     display: block;
     width: 100%;
     height: auto;
@@ -28,4 +28,15 @@
     color: #fff;
     z-index: 2; 
   }
+  .cardhome-css{
+    
+    display: inline-block;
+    overflow: hidden;
+    height: 300px ;
+    width: 300px;
+    margin: 3px;
+    border-radius: 8px;
+    box-shadow: 4px 4px 8px black;
+  }
+  
   

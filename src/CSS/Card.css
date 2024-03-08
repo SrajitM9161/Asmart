@@ -1,35 +1,13 @@
 .card{
+    border: 1px solid #000;
     border-radius: 8px;
-    overflow: hidden;
-    width: 260px;
-    height: 450px;
-    display: inline-block;
-    background-color: #ffffff;
-    justify-content: center;
-    margin: 45px;
-    padding: 30px;
-    margin-left: 60px;
-   
+    box-shadow: #000;
   }
  .card:hover{
-    background-color: #ffffff;
+    background-color: #e8dada;
     transform: scale(1.1);
      
   }
-  
-
-.card_title {
-    padding: 1px;
-   text-align: center;
-  }
-  
-
-  .card_image{
-    height: 130px;
-    width: 210px;
-    border-radius: 10px 10px 10px 10px;
-  }
-
 
 
   
