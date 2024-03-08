@@ -31,7 +31,7 @@ const Home = () => {
     image={Pto10}
      />
      </div>
-      <Footer/>
+     <Footer  />
     </>
   );
 }
