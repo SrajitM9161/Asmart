@@ -15,7 +15,7 @@ const PAPI = () => {
     const [markets, setMarkets] = useState([]);
 
     useEffect(() => {
-        axios.get("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=ENTER_API_KEY&format=json&limit=10000")
+        axios.get("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd00000107640ee53c3249cd401d55a7bfcaae75&format=json&limit=10000")
             .then(response => {
                 const data = response.data.records;
                 setRecords(data);
@@ -71,11 +71,9 @@ const PAPI = () => {
 
     return (
         <>
-        <div className='papi-imag'>
-            <img src={Pi} alt="Image" />
-            <div className='dark-papi'></div>
-        </div>
+       
         <div className='container'>
+            
             <h1 className='title'>Want to know the price?</h1>
             <div className="select-container">
                 <label htmlFor="state">Select State:</label>
@@ -138,10 +136,11 @@ const PAPI = () => {
                             </table>
                         </div>
                     ) : (
-                        <div>No records found for the selected filters.</div>
+                        <div className='not-found'>No records found for the selected filters.</div>
                     )}
                 </>
             )}
+            
         </div>
         </>
     );
