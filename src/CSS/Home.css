@@ -1,0 +1,67 @@
+<<<<<<< HEAD
+=======
+.imag {
+  position: relative;
+  width: 100%;
+}
+
+.imag img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.dark-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.text {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #fff;
+  z-index: 2;
+}
+
+.cardhome-css {
+  position: absolute;
+  top: 350px;
+  z-index: 2;
+  left: 123px;
+  display: flex;
+  height: 300px; /* Fixed height */
+  margin: 20px; /* Increased margin */
+  padding: 10px; /* Added padding */
+  overflow: hidden; /* Hide overflow */
+}
+
+.cardhome-css > * {
+  flex: 0 0 auto;
+  width: 339px; /* Fixed width */
+  height: 300px; /* Fixed height */
+  margin-right: 40px; /* Increased margin between cards */
+}
+
+.cardhome-css > *:last-child {
+  margin-right: 0; /* Remove margin for the last card */
+}
+
+.cardhome-css > * img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+/* Adjust the footer */
+footer {
+  padding-top: 800px;
+}
+>>>>>>> 5c7926ace354ac39adf00d541c576ed53a6819ad
