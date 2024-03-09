@@ -1,12 +1,11 @@
 .title {
   text-align: center;
+  
 }
 
 .select-container {
-  display: inline;
-  justify-content: center;
-  align-items: center;
-  z-index: 4;
+  display: inline-block;
+  margin: 10px;
 }
 
 label {
@@ -22,13 +21,18 @@ select {
   min-width: 200px;
 }
 
-#records-container {
-  display: inline;
-  justify-content: center;
+.container {
+  text-align: center;
+  
+}
+
+.filtered-records-container {
+  margin: 20px auto;
+  width: 70%;
 }
 
 #records-table {
-  width: 70%;
+  width: 100%;
   border-collapse: collapse;
 }
 
@@ -48,58 +52,9 @@ select {
   background-color: #f2f2f2;
 }
 
-#no-records-found {
-  margin-top: 24px;
+.not-found {
+  margin-top: 20px;
   font-size: 18px;
   font-weight: bold;
   color: #888;
-  text-align: center;
-}
-
-.papi-imag {
-  position: relative;
-  width: 100%;
-}
-
-.papi-img img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.dark-papi {
-  position: absolute;
-  top: 0%;
-  left: 0%;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
-  z-index: 1;
-}
-
-.container {
-  background-image: url('../assets/photo11.png');
-  background-size: cover;
-  background-position: center;
-  background-repeat: repeat;
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  background-size: cover;
-  position: absolute;
- 
-}
-
-.Records {
-  align-items: center;
-  text-align: center;
-  justify-content: center;
-}
-
-.data-body {
-  align-items: center;
-  text-align: center;
-  justify-content: center;
 }

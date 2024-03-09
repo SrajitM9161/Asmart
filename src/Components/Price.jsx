@@ -6,9 +6,10 @@ import Footer from './Footer';
 const Price = () => {
   return (
     <>
-      <div className='container' id='container'>
+    <div className='container-price'>
+      <div  className='price-css'>
         <PAPI />
-        <Footer/>
+      </div>
       </div>
     </>
   );
