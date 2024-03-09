@@ -33,21 +33,20 @@
   position: absolute;
   top: 350px;
   z-index: 2;
-  left: 123px;
+ 
   display: flex;
-  height: 300px; 
+  height: 350px; 
   margin: 20px; 
-  padding: 10px; 
-  overflow: hidden; 
+  gap: 200px;
   text-align: center;
   justify-content: space-between;
   font-family: sans-serif;
-  
+  width: 1200px; /* Adjust the width here */
 }
 
 .cardhome-css > * {
   flex: 0 0 auto;
-  width: 339px; 
+  width: 500px; 
   height: 300px; 
   margin-right: 70px; 
 }
@@ -56,7 +55,7 @@
   margin-right: 0; 
 }
 
-.cardhome-css > * img {
+.cardhome-css > * .card_im{
   width: 100%;
   height: 78%;
   border-radius: 0px 0px 8px 8px;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import '../CSS/Card1.css'
+import '../CSS/Card1.css';
 
-const Card1 = ({ title, description, image, price }) => {
+const Card1 = ({ id, title, description, image, price }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseEnter = () => {
@@ -14,7 +14,7 @@ const Card1 = ({ title, description, image, price }) => {
 
   return (
     <div
-      className={`card ${isHovered ? 'hovered' : ''}`}
+      className={`card card-${id} ${isHovered ? 'hovered' : ''}`}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >

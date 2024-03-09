@@ -42,24 +42,28 @@ const Home = () => {
      </div>
      <div className='card1-css'>
      <Card1
+     id={1}
      image={pto14}
      title="corn"
      description="ye hai corn "
      price={20}
      />
      <Card1
+     id={2}
      image={pto15}
      title="flower"
      description="ye hai corn "
      price={20}
      />
      <Card1
+     id={3}
      image={pto3}
      title="vegi"
      description="ye hai corn "
      price={20}
      />
      <Card1
+     id={4}
      image={pto8}
      title="carrot"
      description="ye hai corn "
