@@ -6,6 +6,11 @@ import Footer from '../Components/Footer';
 import Pto4 from "../assets/photo4.png"
 import Pto11 from "../assets/photo11.png"
 import Pto10 from "../assets/photo10.png"
+import pto14 from "../assets/photo14.png"
+import pto8 from "../assets/photo8.png"
+import pto3 from "../assets/photo3.png"
+import pto15 from "../assets/photo15.png"
+import Card1 from "../Components/Card1"
 const Home = () => {
   return (
     <>
@@ -29,6 +34,36 @@ const Home = () => {
      <Card 
     title="Bajra"
     image={Pto10}
+     />
+     </div>
+     <div className='text1'>
+      <h1>-----What services we can offer you?-----</h1>
+      <p>“To get rich, never risk your health. For it is the truth that health is the wealth of wealth.”</p>
+     </div>
+     <div className='card1-css'>
+     <Card1
+     image={pto14}
+     title="corn"
+     description="ye hai corn "
+     price={20}
+     />
+     <Card1
+     image={pto15}
+     title="flower"
+     description="ye hai corn "
+     price={20}
+     />
+     <Card1
+     image={pto3}
+     title="vegi"
+     description="ye hai corn "
+     price={20}
+     />
+     <Card1
+     image={pto8}
+     title="carrot"
+     description="ye hai corn "
+     price={20}
      />
      </div>
      <Footer  />
