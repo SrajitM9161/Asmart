@@ -13,9 +13,9 @@ const Card = (props) => {
   return (
     <div className='card'>
       
-        <h2 className='card_title'>{props.title}</h2>
-        <img className='card_image' src={props.image}  />
-      
+        <h2>{props.title}</h2>
+        <img  src={props.image}  />
+
     </div>
   );
 };
