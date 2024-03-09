@@ -1,19 +1,30 @@
-.card{
-    border: 0.55px solid #000;
-    border-radius: 8px;
-    box-shadow: #000;
-    background-color: #d3d2d2;
-  }
+.card {
+  width: 300vh;
+  border-radius: 10px;
+  box-shadow: black;
+  overflow: hidden;
+  background-color: #fff;
+  transition: all 0.3s ease; /* Transition for smooth hover effect */
+}
+
+.card:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Box shadow on hover */
+  transform: scale(1.05); /* Scale up the card on hover */
+}
+
+.card .title {
+
  
- .card:hover{
-    background-color: #fcfcfc;
-    transform: scale(1.1);
-    
-  }
-  .card:hover >*{
-    border-radius:  0px 0px 8px 8px;
-  }
+  text-align: center;
+  font-family: sans-serif;
+  margin: 0;
+  font-size: 20px;
+  border-bottom: 1px solid #ddd;
+}
 
-
+.card .img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0px 0px 8px 8px;
   
-  
+}

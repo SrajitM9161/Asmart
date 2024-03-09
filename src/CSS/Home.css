@@ -28,40 +28,6 @@
   color: #fff;
   z-index: 2;
 }
-
-.cardhome-css {
-  position: absolute;
-  top: 350px;
-  z-index: 2;
- 
-  display: flex;
-  height: 350px; 
-  margin: 20px; 
-  gap: 200px;
-  text-align: center;
-  justify-content: space-between;
-  font-family: sans-serif;
-  width: 1200px; /* Adjust the width here */
-}
-
-.cardhome-css > * {
-  flex: 0 0 auto;
-  width: 500px; 
-  height: 300px; 
-  margin-right: 70px; 
-}
-
-.cardhome-css > *:last-child {
-  margin-right: 0; 
-}
-
-.cardhome-css > * .card_im{
-  width: 100%;
-  height: 78%;
-  border-radius: 0px 0px 8px 8px;
-}
-
-/* Adjust the footer */
 footer {
   padding-top: 500px;
 }
@@ -69,6 +35,21 @@ footer {
   text-align: center;
   font-size: large;
   padding-top: 220px;
+}
+.cardhome-css{
+  display: flex;
+  flex-direction: row;
+  gap: 170px;
+  padding-left: 190px;
+  top: 390px;
+  z-index: 2;
+  position: absolute;
+}
+.cardhome-css >*image{
+  width: 100%;
+  height: 90px;
+  object-fit: cover;
+
 }
 .card1-css{
   z-index: 2;

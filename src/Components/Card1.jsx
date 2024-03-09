@@ -1,29 +1,24 @@
-import React, { useState } from 'react';
-import '../CSS/Card1.css';
+import React from 'react';
+import "../CSS/Card1.css"
+// Card component
 
-const Card1 = ({ id, title, description, image, price }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const handleMouseEnter = () => {
-    setIsHovered(true);
-  };
-
-  const handleMouseLeave = () => {
-    setIsHovered(false);
-  };
+const Card1 = (props) => {
+  const [isHovered, setIsHovered] = React.useState(false);
 
   return (
-    <div
-      className={`card card-${id} ${isHovered ? 'hovered' : ''}`}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
+    <div 
+      className="card" 
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
     >
-      <img src={image} alt={title} />
-      <div className="card-content">
-        <h3>{title}</h3>
-        <p>{description}</p>
-        <p>${price}</p>
-      </div>
+      <img src={props.image} alt="cardd" className="card-imag" />
+      {isHovered && (
+        <div className="card-details">
+          <h2>{props.title}</h2>
+          <p>{props.description}</p>
+          <p>${props.price}</p>
+        </div>
+      )}
     </div>
   );
 };
