@@ -1,12 +1,17 @@
 .card{
-    border: 1px solid #000;
+    border: 0.5px solid #000;
     border-radius: 8px;
     box-shadow: #000;
+    background-color: #d3d2d2;
   }
+ 
  .card:hover{
-    background-color: #e8dada;
+    background-color: #fcfcfc;
     transform: scale(1.1);
-     
+    
+  }
+  .card:hover >*{
+    border-radius:  0px 0px 8px 8px;
   }
 
 
