@@ -70,11 +70,9 @@ const PAPI = () => {
 
     return (
         <>
-        <div className='papi-imag'>
-            <img src={Pi} alt="Image" />
-            <div className='dark-papi'></div>
-        </div>
+       
         <div className='container'>
+            
             <h1 className='title'>Want to know the price?</h1>
             <div className="select-container">
                 <label htmlFor="state">Select State:</label>
@@ -137,10 +135,11 @@ const PAPI = () => {
                             </table>
                         </div>
                     ) : (
-                        <div>No records found for the selected filters.</div>
+                        <div className='not-found'>No records found for the selected filters.</div>
                     )}
                 </>
             )}
+            
         </div>
         </>
     );
