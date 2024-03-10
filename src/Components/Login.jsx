@@ -1,9 +1,9 @@
 import React from "react";
 import '../CSS/Login.css';
-import { Link } from "react-router-dom";
+import { Link} from "react-router-dom";
 import { useState } from "react";
-import {auth} from "../Firebase/config";
-import { signInWithEmailAndPassword } from "firebase/auth";
+import {auth,googleProvider} from "../Firebase/config";
+import { signInWithEmailAndPassword,signInWithPopup } from "firebase/auth";
 
 const Login = ()=>{
 
@@ -53,13 +53,16 @@ const Login = ()=>{
     //     }
     
     // Function to check if user exists i.e Registered or not.
-    const handleLogins=async(e)=>{    
+    // console.log("The user is"+auth.currentUser.email);
+    const handleLogins=async(e)=>{   
+        
         e.preventDefault();
         try{
             // const userCredentials = await signInWithEmailAndPassword(emails,passwords);
             const userCredentials = await signInWithEmailAndPassword(auth,emails, passwords);
             const users=userCredentials.user.email;
             alert("Hello "+users+", Welcome Back");
+            window.location.href="/";
         }catch(err){
             const errCode=err.code;
             if(errCode=="auth/user-not-found"){
@@ -77,7 +80,16 @@ const Login = ()=>{
             }
         }
     }
-
+    const handleGoogleSignup=async()=>{
+        try{
+            await signInWithPopup(auth,googleProvider);
+            alert("Logged In Successfully");
+            window.location.href="/";
+            
+        }catch(err){
+            alert(err);
+        }
+    }
     // function for show pw
     function showPass(){
         // showPw?setShowPw('false'):setShowPw('true');
@@ -131,8 +143,7 @@ const Login = ()=>{
                     </form>
 
                     <div className="loginGoogle">
-                        {/* <p>Login with <a href=""><img src="https://cdn-icons-png.flaticon.com/128/2335/2335397.png" alt="" /></a> <a href=""><img src="https://cdn-icons-png.flaticon.com/128/3955/3955011.png" alt="" /></a> <a href=""><img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" alt="" /></a></p> */}
-                        <p>Login with <button>Google</button></p>
+                        <p>Or Login with <img onClick={handleGoogleSignup} src="https://cdn-icons-png.flaticon.com/128/2335/2335397.png" alt="" srcset="" /></p>
                     </div>
 
                     <div className="signup">
@@ -146,7 +157,7 @@ const Login = ()=>{
             {/* right half with image */}
             <div className="rightHalf">
 
-                <Link to="/"><button className="cross"><p>X</p></button></Link>
+                {/* <Link to="/"><button className="cross"><p>X</p></button></Link> */}
 
                 <div className="name2">
                     <h2>AGRISMART</h2>

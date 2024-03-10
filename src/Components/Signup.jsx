@@ -39,8 +39,14 @@ const Login = ()=>{
         try{
             await createUserWithEmailAndPassword(auth,emails,passwords);
             alert("User Registered");
+            window.location.href="/login";
         }catch(err){
+            const errCode=err.code;
+            if(errCode=="auth/email-already-in-use"){
+                alert("Email already in use. Please Login")
+            }else{
             alert(err);
+            }
         }
         
     };
@@ -49,9 +55,10 @@ const Login = ()=>{
         try{
             await signInWithPopup(auth,googleProvider);
             alert("Signed Up Successfully");
-        }catch(err){
-            alert(err);
-        }
+            window.location.href="/";
+            }catch(err){
+                alert(err);
+            }
     }
 
     // function for show pw
@@ -111,8 +118,7 @@ const Login = ()=>{
                     </form>
 
                     <div className="loginGoogle">
-                        {/* <p>Signup with <a onClick={handleGoogleSignup} href=""><img src="https://cdn-icons-png.flaticon.com/128/2335/2335397.png" alt="" /></a> <a href=""><img src="https://cdn-icons-png.flaticon.com/128/3955/3955011.png" alt="" /></a> <a href=""><img src="https://cdn-icons-png.flaticon.com/128/5969/5969020.png" alt="" /></a></p> */}
-                        <p>Sign up with <button onClick={handleGoogleSignup}>Google</button></p>
+                        <p>Or Sign up with <img onClick={handleGoogleSignup} src="https://cdn-icons-png.flaticon.com/128/2335/2335397.png" alt="" srcset="" /></p>
                     </div>
 
                     <div className="signup">
@@ -126,7 +132,7 @@ const Login = ()=>{
             {/* right half with image */}
             <div className="rightHalf">
 
-                <Link to="/"><button className="cross"><p>X</p></button></Link>
+                {/* <Link to="/"><button className="cross"><p>X</p></button></Link> */}
 
                 <div className="name2">
                     <h2>AGRISMART</h2>
