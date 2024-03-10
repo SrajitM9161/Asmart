@@ -127,6 +127,9 @@ body {
   color: black;
 }
 
+.btnComp,.out{
+  margin-left: 4px;
+}
 
 /* Hover  */
 .btnComp:hover {
@@ -190,4 +193,17 @@ body {
     border: 1px solid rgba(255, 217, 0, 0.228);
   }
 
+}
+
+/* Added V */
+.currUser{
+  color: rgb(255, 255, 255);
+  font-weight: 500;
+  font-family:sans-serif;
+  padding-left: 1vw;
+}
+.currUser:hover{
+  transform: none;
+  outline: none;
+  border: none;
 }
