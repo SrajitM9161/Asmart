@@ -5,7 +5,7 @@
 
 .select-container {
   display: inline-block;
-  margin: 10px;
+  padding: 10px;
 }
 
 label {
@@ -23,7 +23,7 @@ select {
 
 .container {
   text-align: center;
-  
+
 }
 
 .filtered-records-container {
