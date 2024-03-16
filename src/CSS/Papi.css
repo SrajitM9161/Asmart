@@ -1,6 +1,6 @@
 .title {
   text-align: center;
-  
+
 }
 
 .select-container {
@@ -19,6 +19,7 @@ select {
   border: 1px solid #ccc;
   border-radius: 40px;
   min-width: 200px;
+
 }
 
 .container {
