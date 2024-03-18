@@ -99,11 +99,11 @@ const Login = ()=>{
                         </div> */}
                         <div className="names">
                             <strong>Email</strong>
-                            <p>✉️<input value={emails} onChange={handleEmailChange} type="email" required="true" name="" id="" placeholder="Type your email here" /></p>
+                            <p>✉️<input value={emails} onChange={handleEmailChange} type="email" required="true" name="" id="" placeholder="Type your email here..." /></p>
                         </div>
                         <div className="pw">
                             <strong>Password</strong>
-                            <p>🔒<input value={passwords} onChange={handlePasswordChange} type={showPw?"text":"password"} required="true" name="" id="" placeholder="Type your password here" /></p>
+                            <p>🔒<input value={passwords} onChange={handlePasswordChange} type={showPw?"text":"password"} required="true" name="" id="" placeholder="Type your password here..." /></p>
                         </div>
 
                         <div  className="showPw">

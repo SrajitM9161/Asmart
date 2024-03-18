@@ -123,11 +123,11 @@ const Login = ()=>{
                     <form onSubmit={handleLogins} className="loginForm">
                         <div className="names">
                             <strong>Username</strong>
-                            <p>👨<input value={emails} onChange={handleEmailChange} type="email" name="" id="" placeholder="Type your email here" /></p>
+                            <p>👨<input value={emails} onChange={handleEmailChange} type="email" name="" id="" placeholder="Ex: demo123@gmail.com" /></p>
                         </div>
                         <div className="pw">
                             <strong>Password</strong>
-                            <p>🔒<input value={passwords} onChange={handlePasswordChange} type={showPw?"text":"password"}  name="" id="" placeholder="Type your password here" /></p>
+                            <p>🔒<input value={passwords} onChange={handlePasswordChange} type={showPw?"text":"password"}  name="" id="" placeholder="Ex: demopw123" /></p>
                         </div>
 
                         <div  className="showPw">
