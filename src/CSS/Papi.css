@@ -1,11 +1,11 @@
 .title {
   text-align: center;
-  
+
 }
 
 .select-container {
   display: inline-block;
-  margin: 10px;
+  padding: 10px;
 }
 
 label {
@@ -19,11 +19,12 @@ select {
   border: 1px solid #ccc;
   border-radius: 40px;
   min-width: 200px;
+
 }
 
 .container {
   text-align: center;
-  
+
 }
 
 .filtered-records-container {
