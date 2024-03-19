@@ -3,6 +3,7 @@ import Footer from '../Components/Footer';
 const Trade = () => {
   return (
     <div>
+     
      <Footer/>
     </div>
   )
