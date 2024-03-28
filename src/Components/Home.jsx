@@ -66,29 +66,30 @@ const Home = () => {
       </div>
       <div className="about-all">
       <div className="about-pleft">
-        <h3>Fresh</h3>
-        <p>yha p likhna hai</p>
+        <h3>Real Time price Detection </h3>
+        <p>Providing Real time data of price of 
+          every <br/> mandi and district<br/> </p>
         <br />
-        <h3>Premium</h3>
-        <p>yha likho</p>
+        <h3>Barganing System </h3>
+        <p>Sell your crop at your best price </p>
         <br />
-        <h3>on time delievery</h3>
-        <p>yha likho</p>
+        <h3>Crop Detection </h3>
+        <p>Enter The Data detect the crop </p>
         </div>
         <div className="about-mid">
           <h2 id="about-p1">Who we are?</h2>
-          <p id="about-p2">     We are bla bla bla bla bla bla bla bla bla bla bla  <br />bla bla bla bla <br />bla bla bla bla</p>
+          <p id="about-p2"> Welcome to our world where Farmey revolutionizes agriculture by integrating buying, selling, <br />and predictive crop pricing with cutting-edge soil detection technology! Unearth the future  <br />of farming with us at Farmey! 🚀</p>
           <img id="about_image" src={ptobg} alt="image" />
         </div>
         <div className="about-pright">
-          <h3>Naturally grown</h3>
-          <p>hjjjndjnf</p>
+          <h3>Farmer Community </h3>
+          <p>All Farmers can Talk and Expert farmers give solution</p>
           <br />
-          <h3>pesticide free</h3>
-          <p>hakxj</p>
+          <h3>Market Price data </h3>
+          <p>Real Time district Market Wise Price</p>
           <br />
-          <h3>real time data</h3>
-          <p>hsbsb</p>
+          <h3>Best Crop according to soil </h3>
+          <p>Give your soil data and check which crop is best for your soil </p>
         </div>
       </div>
       <Footer />
