@@ -1,7 +1,8 @@
 import React from 'react';
 import PAPI from '../PriceAPI/PAPI';
-import '../CSS/Price.css';
 import Footer from './Footer';
+
+import '../CSS/Price.css';
 
 const Price = () => {
   return (

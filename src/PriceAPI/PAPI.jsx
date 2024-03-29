@@ -8,13 +8,14 @@ const PAPI = () => {
     const [selectedState, setSelectedState] = useState("");
     const [selectedDistrict, setSelectedDistrict] = useState("");
     const [selectedMarket, setSelectedMarket] = useState("");
+    
     const [filteredRecords, setFilteredRecords] = useState([]);
     const [states, setStates] = useState([]);
     const [districts, setDistricts] = useState([]);
     const [markets, setMarkets] = useState([]);
 
     useEffect(() => {
-        axios.get("")
+        axios.get("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd0000012a9b2a370e5b48de5a24f54307cc98e3&format=json&limit=10000")
             .then(response => {
                 const data = response.data.records;
                 setRecords(data);
