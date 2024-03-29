@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import urlWithApiKey from '../projectApiKey/apiKey';
 import '../CSS/Papi.css';
 
 
@@ -15,7 +16,7 @@ const PAPI = () => {
     const [markets, setMarkets] = useState([]);
 
     useEffect(() => {
-        axios.get("")
+        axios.get(urlWithApiKey)
             .then(response => {
                 const data = response.data.records;
                 setRecords(data);
