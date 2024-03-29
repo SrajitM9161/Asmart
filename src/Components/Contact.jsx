@@ -1,5 +1,5 @@
 import React from 'react'
-// import "../CSS/Contact.css";
+import "../CSS/Contact.css";
 import Footer from "../Components/Footer";
 
 const Contact = () => {
