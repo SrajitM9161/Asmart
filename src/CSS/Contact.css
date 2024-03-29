@@ -1,0 +1,89 @@
+@font-face {
+    font-family: 'Orelega One';
+    src: url("path/to/orelegaone.woff2") format('woff2'),
+        url("path/to/orelegaone.woff") format('woff');
+    font-style: normal;
+}
+
+
+.container{
+    display: flex;
+    width: 60vw;
+    border-top:15px solid #184109;
+    /* padding: 0px; */
+    margin: 44px;
+    max-width: 60vw;
+    margin-left: 10vw;
+    margin-right: auto;
+    
+}
+.h2{
+    font-size: 3vw;
+    margin-top: 1.5vw;
+    margin-bottom: 1.5vw;
+    /* text-align: left; */
+    font-family: Orelega One, sans-serif;  
+}
+
+.subHeading{
+    font-family: Orelega One, sans-serif;
+    font-size:1.5vw;
+    font-weight: bold;
+}
+.content{
+    display: flex;
+    flex-direction: row;
+    /* justify-content: center; */
+    align-content: flex-start;
+    text-align: left;
+
+}
+
+.content1, .content2{
+    display: flex;
+    flex-direction: column;
+    font-size:1.5vw;
+
+}
+
+.content1, .content2{
+    text-align: left;
+    width: 50%;
+}
+
+/* .content2{
+    text-align: ;
+} */
+
+.input-box{
+    width: 70%;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+    
+    ;
+}
+
+.button-container{
+    text-align: left;
+    margin-top: 2vh;
+    margin-bottom: 2vh;
+}
+
+.submitButton{
+    background: #DEA30ED6;
+    border: none;
+    border-radius: 15px;
+    font-size: 3vh;
+    padding: 2vh;
+    font-weight: bold;
+}
+
+.container input{
+    border: none;
+    background-color: #EDECEC;
+    border-radius: 15px;
+    height: 5vh;
+    width: 100%;
+    padding-left: 2vh;
+
+}
