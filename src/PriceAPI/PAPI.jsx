@@ -52,7 +52,7 @@ const PAPI = () => {
     const handleStateChange = (event) => {
         const state = event.target.value;
         setSelectedState(state);
-        setSelectedDistrict(""); 
+        setSelectedDistrict("");
         setSelectedMarket("");
         const uniqueDistricts = Array.from(new Set(records.filter(record => record.state === state).map(record => record.district)));
         setDistricts(uniqueDistricts);
