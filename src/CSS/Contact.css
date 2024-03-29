@@ -1,12 +1,4 @@
-@font-face {
-    font-family: 'Orelega One';
-    src: url("path/to/orelegaone.woff2") format('woff2'),
-        url("path/to/orelegaone.woff") format('woff');
-    font-style: normal;
-}
-
-
-.container{
+.contact-container{
     display: flex;
     width: 60vw;
     border-top:15px solid #184109;
@@ -17,20 +9,20 @@
     margin-right: auto;
     
 }
-.heading{
+.contact-heading{
     font-size: 3vw;
     margin-top: 1.5vw;
     margin-bottom: 1.5vw;
     /* text-align: left; */
-    font-family: Orelega One, sans-serif;  
+    font-family: sans-serif;
 }
 
-.subHeading{
-    font-family: Orelega One, sans-serif;
+.contact-subheading{
+    font-family: sans-serif;
     font-size:1.5vw;
     font-weight: bold;
 }
-.content{
+.contact-content{
     display: flex;
     flex-direction: row;
     /* justify-content: center; */
@@ -39,23 +31,16 @@
 
 }
 
-.content1, .content2{
+.contact-content1, .contact-content2{
     display: flex;
     flex-direction: column;
     font-size:1.5vw;
-
-}
-
-.content1, .content2{
     text-align: left;
     width: 50%;
+
 }
 
-/* .content2{
-    text-align: ;
-} */
-
-.input-box{
+.contact-input-box{
     width: 70%;
     margin-top: 2vh;
     margin-bottom: 2vh;
@@ -63,13 +48,13 @@
     ;
 }
 
-.button-container{
+.button-contact-container{
     text-align: left;
     margin-top: 2vh;
     margin-bottom: 2vh;
 }
 
-.submitButton{
+.contact-submitButton{
     background: #DEA30ED6;
     border: none;
     border-radius: 15px;
@@ -78,12 +63,19 @@
     font-weight: bold;
 }
 
-.container input{
+.contact-container input{
     border: none;
     background-color: #EDECEC;
     border-radius: 15px;
     height: 5vh;
     width: 100%;
     padding-left: 2vh;
+}
+
+.contact-submitButton:hover{
+    background:#f7b205 ;
+    scale: 1.1 ;
+    transition: 1ms;
+    cursor: pointer;
 
 }
