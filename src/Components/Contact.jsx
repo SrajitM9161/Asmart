@@ -8,7 +8,7 @@ const Contact = () => {
     <div className="container">
 
       <form action="" className="action">
-        <h2 className='h2'>Contact Us</h2>
+        <h2 className='heading'>Contact Us</h2>
           <p className='subHeading'>"Agriculture is our wisest pursuit, because it will in the end contribute most to real wealth, good morals & happiness."</p>
         <div className='content'>
         <div className="content1">

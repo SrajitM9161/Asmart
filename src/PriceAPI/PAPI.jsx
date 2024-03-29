@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import urlWithApiKey from '../projectApiKey/apiKey';
 import '../CSS/Papi.css';
 
 
@@ -15,7 +16,7 @@ const PAPI = () => {
     const [markets, setMarkets] = useState([]);
 
     useEffect(() => {
-        axios.get("https://api.data.gov.in/resource/9ef84268-d588-465a-a308-a864a43d0070?api-key=579b464db66ec23bdd0000012a9b2a370e5b48de5a24f54307cc98e3&format=json&limit=10000")
+        axios.get(urlWithApiKey)
             .then(response => {
                 const data = response.data.records;
                 setRecords(data);
@@ -51,7 +52,7 @@ const PAPI = () => {
     const handleStateChange = (event) => {
         const state = event.target.value;
         setSelectedState(state);
-        setSelectedDistrict(""); 
+        setSelectedDistrict("");
         setSelectedMarket("");
         const uniqueDistricts = Array.from(new Set(records.filter(record => record.state === state).map(record => record.district)));
         setDistricts(uniqueDistricts);
