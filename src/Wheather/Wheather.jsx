@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import API from '../API/oneCall_Api.config';
+import { weatherApiKey } from '../projectApiKey/apiKey';
 import '../CSS/Wheather.css';
 
 const Weather = () => {
@@ -14,7 +14,7 @@ const Weather = () => {
         navigator.geolocation.getCurrentPosition(
           (position) => {
             const { latitude, longitude } = position.coords;
-            const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${API}`;
+            const weatherApiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${weatherApiKey}`;
 
             axios.get(weatherApiUrl)
               .then(response => {

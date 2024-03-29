@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import '../CSS/Trade.css';
 import { useState,useEffect } from 'react';
+import urlWithApiKey from '../projectApiKey/apiKey';
 
 const Trade=()=> {
 
@@ -28,7 +29,7 @@ const Trade=()=> {
 
     // Getting data from api and setting the state lists.
     useEffect(() => {
-        axios.get("")
+        axios.get(urlWithApiKey)
             .then(response => {
                 const data = response.data.records;
                 setRecords(data);
