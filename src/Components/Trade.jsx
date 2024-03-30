@@ -3,6 +3,9 @@ import axios from 'axios';
 import '../CSS/Trade.css';
 import { useState,useEffect } from 'react';
 import urlWithApiKey from '../projectApiKey/apiKey';
+import { getDocs,collection} from "firebase/firestore";
+import {addDoc} from "firebase/firestore";
+import { auth,db } from '../Firebase/config';
 
 const Trade=()=> {
 
@@ -153,7 +156,16 @@ const handleCropChange = (event) => {
 // Following code to enter and handle the crop price proposed by the user.
 const [cropValue, setCropValue] = useState('');
 
-    const handleSubmit = (event) => {
+
+    const handleCropValueChange = (event) => {
+        setCropValue(event.target.value);
+    };
+    
+
+    // Firebase code below:
+    const proposedCropCollectionRef=collection(db,"proposedCropPrices");
+
+    const handleSubmit = async(event) => {
         event.preventDefault();
 
         const enteredValue = parseInt(cropValue);
@@ -162,16 +174,22 @@ const [cropValue, setCropValue] = useState('');
             alert('Please enter a price from minimum to maximum range for this crop.');
             setCropValue('');
         } else {
-            alert('Your proposed price for '+selectedCrop+' : ' + enteredValue);
             // Here, I will implement the logic for submitting this price to database.
-
+            try{
+                await addDoc(proposedCropCollectionRef,{
+                    proposedPrice:cropValue,
+                    selectedCrop:selectedCrop,
+                    userId:auth?.currentUser?.uid,
+                });
+            }
+            catch(err){
+                alert(err);
+            }
+            alert('Your proposed price for '+selectedCrop+' : ' + enteredValue);
+            setCropValue('');
         }
-    };
 
-    const handleCropValueChange = (event) => {
-        setCropValue(event.target.value);
     };
-    
 
     return (
         <div className='container'>
