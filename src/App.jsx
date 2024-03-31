@@ -7,6 +7,7 @@ import Trade from './Components/Trade'
 import Contact from './Components/Contact'
 import Login from './Components/Login'
 import Signup from './Components/Signup'
+import Admin from './Components/Admin'
 import CropDetection from './Components/CropDetection'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 
@@ -25,6 +26,7 @@ const App = () => {
           <Route path='/contact' element={<Contact />}></Route>
           <Route path='/login' element={<Login />}></Route>
           <Route path='/signup' element={<Signup />}></Route>
+          <Route path='/admin' element={<Admin />}></Route>
         </Routes>
       </BrowserRouter>
     </>

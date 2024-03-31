@@ -190,6 +190,23 @@ const [cropValue, setCropValue] = useState('');
         }
 
     };
+    const postData = {
+        cropName:selectedCrop,
+        proposedPrice: cropValue
+      };
+
+    // To store data in a MongoDB Collection 
+    const handleSubmitMongoDB=(e)=>{
+    e.preventDefault(); 
+        axios.post('http://localhost:3737/v1/proposeCropPrice', postData)
+    .then(response => {
+      console.log('Response:', response.status);
+    })
+    .catch(error => {
+      console.error('Error:', error.response.data);
+    });
+
+    }
 
     return (
         <div className='container'>
