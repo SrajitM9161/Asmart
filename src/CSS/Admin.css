@@ -1,0 +1,14 @@
+.headAdmin{
+    display: flex;
+    justify-content: center;
+}
+
+.cropLists{
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    width: 50%;
+}
+
+.cropItem{
+    background-color: rgb(99, 182, 182);
+}
+

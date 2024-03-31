@@ -3,7 +3,6 @@ import { initializeApp } from "firebase/app";
 import {getAuth,GoogleAuthProvider} from "firebase/auth";
 import {getFirestore} from "firebase/firestore";
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyA-66Q4RPB4dFXDEkzcrI3IExrBixeqCUg",
   authDomain: "agrismart-fefde.firebaseapp.com",
