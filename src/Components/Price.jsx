@@ -11,7 +11,6 @@ const Price = () => {
       <div  className='price-css'>
         <PAPI />
       </div>
-      <Footer/>
       </div>
     </>
   );

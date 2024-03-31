@@ -92,7 +92,6 @@ const Home = () => {
           <p>Give your soil data and check which crop is best for your soil </p>
         </div>
       </div>
-      <Footer />
     </div>
   );
 };

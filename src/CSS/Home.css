@@ -34,7 +34,6 @@ footer {
 .text1{
   text-align: center;
   font-size: large;
-  padding-top: 220px;
 }
 .cardhome-css{
   display: flex;
@@ -61,6 +60,8 @@ footer {
   padding: 30px;
   justify-content: space-between;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   color: #000;
 }
