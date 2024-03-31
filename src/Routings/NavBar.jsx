@@ -65,7 +65,6 @@ const NavBar = () => {
           <Link to="/price">Price</Link>
           <hr className='menu-opt-hr'/>
           <Link to="/cropDetection">Crop Detction</Link>
-          <Link to="/cart">Soil Detection</Link>
           <hr className='menu-opt-hr'/>
           {currUser?(<><p className='currUser'>{currUser}</p><button className='btnComp out' onClick={logoutButton}>Logout</button></>):(<Link className='menu-btnComp' to="/login"><button className="btnComp">Login</button></Link>)}
 
