@@ -14,7 +14,7 @@ import ptobg from "../assets/bgfarmer.png";
 import Card1 from "../Components/Card1";
 const Home = () => {
   return (
-    <>
+    <div>
       <div className="imag">
         <img src={Ig} alt="Image" />
         <div className="dark-overlay"></div>
@@ -24,9 +24,9 @@ const Home = () => {
         <h3>Want to do barganing?</h3>
       </div>
       <div className="cardhome-css">
-        <Card title="Whole Wheat" image={Pto4} />
-        <Card title="Whole Rice" image={Pto11} />
-        <Card title="Bajra" image={Pto10} />
+        <div><Card title="Whole Wheat" image={Pto4} /></div>
+        <div><Card title="Whole Rice" image={Pto11} /></div>
+        <div><Card title="Bajra" image={Pto10} /></div>
       </div>
       <div className="text1">
         <h1>-----What services we can offer you?-----</h1>
@@ -65,16 +65,16 @@ const Home = () => {
         <h1 id="about-h">About us</h1>
       </div>
       <div className="about-all">
-      <div className="about-pleft">
-        <h3>Real Time price Detection </h3>
-        <p>Providing Real time data of price of 
-          every <br/> mandi and district<br/> </p>
-        <br />
-        <h3>Barganing System </h3>
-        <p>Sell your crop at your best price </p>
-        <br />
-        <h3>Crop Detection </h3>
-        <p>Enter The Data detect the crop </p>
+        <div className="about-pleft">
+          <h3>Real Time price Detection </h3>
+          <p>Providing Real time data of price of
+            every <br /> mandi and district<br /> </p>
+          <br />
+          <h3>Barganing System </h3>
+          <p>Sell your crop at your best price </p>
+          <br />
+          <h3>Crop Detection </h3>
+          <p>Enter The Data detect the crop </p>
         </div>
         <div className="about-mid">
           <h2 id="about-p1">Who we are?</h2>
@@ -92,8 +92,7 @@ const Home = () => {
           <p>Give your soil data and check which crop is best for your soil </p>
         </div>
       </div>
-      <Footer />
-    </>
+    </div>
   );
 };
 

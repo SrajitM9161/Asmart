@@ -34,16 +34,17 @@ footer {
 .text1{
   text-align: center;
   font-size: large;
-  padding-top: 220px;
 }
 .cardhome-css{
   display: flex;
   flex-direction: row;
-  gap: 170px;
-  padding-left: 190px;
-  top: 390px;
+  flex-wrap: wrap;
+  gap: 5em;
+  text-align: center;
+  justify-content: center;
   z-index: 2;
-  position: absolute;
+  position: relative;
+  top: -3em;
 }
 .cardhome-css >*image{
   width: 100%;
@@ -51,11 +52,16 @@ footer {
   object-fit: cover;
 
 }
+.cardhome-css div{
+  height: 15em;
+}
 .card1-css{
   z-index: 2;
   padding: 30px;
   justify-content: space-between;
   display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   align-items: center;
   color: #000;
 }

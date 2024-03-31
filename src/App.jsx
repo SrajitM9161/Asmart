@@ -1,5 +1,6 @@
 import React from 'react'
 import NavBar from './Routings/NavBar'
+import Footer from './Components/Footer'
 import Home from './Components/Home'
 import Price from './Components/Price'
 import Cart from './Components/Cart'
@@ -28,6 +29,8 @@ const App = () => {
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/admin' element={<Admin />}></Route>
         </Routes>
+
+        <Footer className='footer'/>
       </BrowserRouter>
     </>
   )
