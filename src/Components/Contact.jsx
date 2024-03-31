@@ -1,20 +1,41 @@
-import React from 'react'
+import emailjs from '@emailjs/browser';
+import { React, useRef } from 'react';
 import "../CSS/Contact.css";
 import Footer from "../Components/Footer";
 
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm('service_xy67i3g', 'template_iy5ny48', form.current, {
+        publicKey: 'bWk-x3h-304pPmHxG',
+      })
+      .then(
+        () => {
+          alert('SUCCESS!');
+        },
+        (error) => {
+          alert('FAILED...', error.text);
+        },
+      );
+  };
+
   return (
     <div>
     <div className="contact-container">
 
-      <form action="" className="action">
+      {/* <form action="" className="action"> */}
+      <form ref={form} onSubmit={sendEmail}>
         <h2 className='contact-heading'>Contact Us</h2>
           <p className='contact-subheading'>"Agriculture is our wisest pursuit, because it will in the end contribute most to real wealth, good morals & happiness."</p>
         <div className='contact-content'>
         <div className="contact-content1">
           <label id='Fname'>Full Name</label>
             <div className="contact-input-box">
-              <input type="text" className="Fname" placeholder='Enter Full Name' required />
+              <input type="text" className="Fullname" placeholder='Enter Full Name' required />
             </div>
           <label id='PhoneNumber'>Phone Number</label>
             <div className="contact-input-box">
@@ -37,7 +58,7 @@ const Contact = () => {
             </div>
           <label id='Landmark'>Landmark</label>
             <div className="contact-input-box">
-              <input type="text" className="Landmark" placeholder='Near ---' required />
+              <input type="text" className="Landmark" placeholder='Near ---'  />
             </div>
 
         </div>
