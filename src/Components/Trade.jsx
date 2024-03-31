@@ -210,7 +210,8 @@ const [cropValue, setCropValue] = useState('');
 
     return (
         <div className='container'>
-            <h1 className='title'>Want to know the price?</h1>
+            <h2 className='title'>🌱 Farmers: Nurturing the Earth's Pulse, Feeding the 🌍, Cultivating Tomorrow's 🌟.</h2>
+            <h4> Select your data parameters and send a request for the best crop at an unbeatable price.</h4>
             <div className="select-container">
                 <label htmlFor="state">Select State:</label>
                 <select id="state" value={selectedState} onChange={handleStateChange}>
