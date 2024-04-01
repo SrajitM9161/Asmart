@@ -2,16 +2,15 @@ import React from "react";
 import "../CSS/Home.css";
 import Ig from "../assets/photo1.png";
 import Card from "../Components/Card";
-import Footer from "../Components/Footer";
 import Pto4 from "../assets/photo4.png";
 import Pto11 from "../assets/photo11.png";
 import Pto10 from "../assets/photo10.png";
-import pto14 from "../assets/photo14.png";
-import pto8 from "../assets/photo8.png";
-import pto3 from "../assets/photo3.png";
-import pto15 from "../assets/photo15.png";
 import ptobg from "../assets/bgfarmer.png";
 import Card1 from "../Components/Card1";
+import Community from "../assets/Community.jpeg"
+import pictrade from "../assets/Trading.png"
+import price from "../assets/Price.jpeg"
+import cropdetection from "../assets/Crop-Detection.png"
 const Home = () => {
   return (
     <div>
@@ -37,28 +36,28 @@ const Home = () => {
       </div>
       <div className="card1-css">
         <Card1
-          image={pto14}
-          title="corn"
-          description="ye hai corn "
-          price={20}
+          image={pictrade}
+          title="Trading System"
+          description="Elevate your farming experience: select, sell, and thrive with our innovative platform connecting farmers to the best crop choices and prices in their nearest mandi."
+      
+        />
+        <Card1 
+          image={price}
+          title=" Price Detection"
+          description="Empowering farmers with real-time market prices for their state district's nearest mandi, ensuring informed decision-making and optimal profitability"
+      
         />
         <Card1
-          image={pto15}
-          title="flower"
-          description="ye hai corn "
-          price={20}
+          image={cropdetection}
+          title="Crop Detection"
+          description="Utilizing advanced technology for precise crop detection, revolutionizing agricultural practices with accuracy and efficiency."
+      
         />
         <Card1
-          image={pto3}
-          title="vegi"
-          description="ye hai corn "
-          price={20}
-        />
-        <Card1
-          image={pto8}
-          title="carrot"
-          description="ye hai corn "
-          price={20}
+          image={Community}
+          title="Farmer Community "
+          description="Building a thriving farmer community through knowledge-sharing, support, and empowerment for sustainable agriculture. "
+         
         />
       </div>
       <div className="about_home">

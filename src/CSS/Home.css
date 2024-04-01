@@ -124,3 +124,6 @@ footer {
   transform: translate(1.5%, -50%);
  margin-top: 335px;
 }
+.card1-css{
+  gap: 50px
+}
