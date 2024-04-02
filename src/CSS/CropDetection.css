@@ -1,0 +1,119 @@
+.crop-heading {
+    text-align: center;
+    font-family: Ubuntu;
+    color: darkgreen;
+}
+
+.crop-detection {
+    position: relative;
+    display: flex;
+    /* justify-content: center; */
+    /* align-items: center; */
+    background-image: url('../assets/photo23.jpg');
+    background-size: cover;
+    margin: 5em 0;
+}
+
+.crop-detection::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Adjust the opacity by changing the last value */
+}
+
+.crop-detection-form {
+    display: flex;
+    flex-direction: column;
+    background: white;
+    margin: -1em 3em;
+    width: 45%;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    z-index: 1;
+}
+
+.detail-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1em;
+    padding: 1em;
+}
+
+.form-text1 {
+    margin: 1em 0 0 1em;
+    font-size: large;
+}
+
+.form-text2 {
+    margin: 1em auto;
+    font-size: large;
+}
+
+.form-text2 a {
+    text-decoration: none;
+    color: darkgreen;
+    font-weight: bold;
+}
+
+.detail-box {
+    display: flex;
+    flex-direction: column;
+    margin: 1em 1em;
+    gap: 1em;
+}
+
+.detail-box input {
+    border: none;
+    border-radius: 20px;
+    font-size: medium;
+    padding: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+.prediction-btn {
+    width: 10em;
+    margin: auto;
+    margin-top: 1em;
+    background: gold;
+    color: darkgreen;
+    font-size: 800;
+    font-weight: bolder;
+    border: none;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+    cursor: pointer;
+}
+
+.prediction-output {
+    margin: 3em;
+    color: white;
+    z-index: 1;
+}
+
+.prediction-output h1 {
+    color: rgba(232, 172, 56, 1);
+}
+
+.prediction-output h4 {
+    font-size: large;
+    font-style: italic;
+    font-weight: normal;
+}
+
+@media (max-width:1000px) {
+    .crop-detection {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .crop-detection-form {
+        width: auto;
+    }
+}
