@@ -37,7 +37,7 @@ const Contact = () => {
             </div>
           <label id='PhoneNumber'>Phone Number</label>
             <div className="contact-input-box">
-              <input type="text" className="PhoneNumber" name="PhoneNumber" placeholder='+91-1234567891' required />
+              <input type="tel" className="PhoneNumber" name="PhoneNumber" placeholder='+91-1234567891' required />
             </div>
           <label id='FAddress'>Full Address</label>
             <div className="contact-input-box">
@@ -52,7 +52,7 @@ const Contact = () => {
             </div>
           <label id='Adhar'>Adhar Card Number</label>
             <div className="contact-input-box">
-              <input type="text" className="Adhar" name="Adhar" placeholder='123456789123' required />
+              <input type="tel" className="Adhar" name="Adhar" placeholder='123456789123' required />
             </div>
           <label id='Landmark'>Landmark</label>
             <div className="contact-input-box">
