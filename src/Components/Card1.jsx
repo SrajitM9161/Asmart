@@ -1,6 +1,6 @@
 import React from 'react';
 import "../CSS/Card1.css"
-// Card component
+
 
 const Card1 = (props) => {
   const [isHovered, setIsHovered] = React.useState(false);
@@ -16,7 +16,6 @@ const Card1 = (props) => {
         <div className="card-details">
           <h2>{props.title}</h2>
           <p>{props.description}</p>
-          <p>${props.price}</p>
         </div>
       )}
     </div>

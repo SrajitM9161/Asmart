@@ -48,7 +48,7 @@
 
 body {
   margin: 0;
-  
+
 }
 
 .navbar {
@@ -76,13 +76,15 @@ body {
   align-items: center;
 }
 
-.weather-icon{
+.weather-icon {
   height: 20px;
   width: 30px;
 }
+
 .right-nav {
   display: flex;
   align-items: center;
+  z-index: 99;
 }
 
 .right-nav .mobile-menu-button {
@@ -102,18 +104,19 @@ body {
 .right-nav .menu a {
   text-decoration: none;
   color: #fff;
-  margin: 0 20px;
-  padding: 2px 10px;
+  margin: 0 2em;
+  padding: 2px;
   /* border-radius: 20px; */
 }
 
-.menu :hover {
+.right-nav .menu :hover {
   transform: scale(1.2);
   transition: 0.3s;
-  border-right: 1px solid #efcc2d;
   border-bottom: 1px solid #efcc2d;
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+
+.menu-opt-hr {
+  display: none;
 }
 
 /* Button */
@@ -121,15 +124,17 @@ body {
   display: inline-block;
   background-color: #efcc2d;
   text-decoration: none;
+  margin: 0 1em;
   padding: 10px 20px;
   border: none;
-  border-radius: 20px;
+  border-radius: 17px;
   color: black;
 }
 
-.btnComp,.out{
+/* .btnComp,
+.out {
   margin-left: 4px;
-}
+} */
 
 /* Hover  */
 .btnComp:hover {
@@ -145,7 +150,7 @@ body {
 }
 
 /*------------ Responsiveness - Media query --------- */
-@media (max-width: 768px) {
+@media (max-width: 940px) {
   .right-nav .mobile-menu-button {
     display: flex;
     font-size: 25px;
@@ -164,17 +169,21 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    height: 60%;
-    width: 60%;
+    height: 100vh;
+    width: 15em;
     background-color: #7cac3d;
     padding: 50px 0px;
-    border-radius: 0 0px 50px;
+    border-radius: 0 0px 50px 50px;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
   }
 
   .right-nav .menu.open {
     display: flex;
     animation: slideIn 0.5s cubic-bezier(0.3, 1, 0.32, 1) forwards;
+  }
+
+  .menu-opt-hr {
+    display: block;
   }
 
   @keyframes slideIn {
@@ -196,13 +205,14 @@ body {
 }
 
 /* Added V */
-.currUser{
+.currUser {
   color: rgb(255, 255, 255);
   font-weight: 500;
-  font-family:sans-serif;
+  font-family: sans-serif;
   padding-left: 1vw;
 }
-.currUser:hover{
+
+.currUser:hover {
   transform: none;
   outline: none;
   border: none;

@@ -209,6 +209,7 @@ const [cropValue, setCropValue] = useState('');
     }
 
     return (
+        <div className='Trade-container'>
         <div className='container'>
             <h2 className='title'>🌱 Farmers: Nurturing the Earth's Pulse, Feeding the 🌍, Cultivating Tomorrow's 🌟.</h2>
             <h4> Select your data parameters and send a request for the best crop at an unbeatable price.</h4>
@@ -257,7 +258,7 @@ const [cropValue, setCropValue] = useState('');
                 <>
                 
                         <div className="filtered-records-container">
-                            <h2>Crop selected = {selectedCrop}</h2>
+                            <h2> Your Selected Crop is -- {selectedCrop}</h2>
 {/*                            
                             {filteredRecords.map((record) => (   //use useeffectfor this
                                         <>
@@ -271,10 +272,10 @@ const [cropValue, setCropValue] = useState('');
                                         </>
                             ))} */}
 
-                            <h3>Minimum Price = {minPrice} <br></br>Maximum Price = {maxPrice}</h3>
+                            <h3> The Minimum Price = {minPrice} <br></br> The Maximum Price = {maxPrice}</h3>
                             <form onSubmit={handleSubmit}>
-                                    <label htmlFor="numberInput">Enter your price (from {minPrice} to {maxPrice}):</label>
-                                    <input 
+                                    <label className='Trade-input-label' htmlFor="numberInput">Enter your price (from {minPrice} to {maxPrice}):</label>
+                                    <input  className='Trade-input' placeholder='Enter Price '
                                         type="tel" 
                                         id="numberInput" 
                                         min={minPrice} 
@@ -282,13 +283,14 @@ const [cropValue, setCropValue] = useState('');
                                         value={cropValue} 
                                         onChange={handleCropValueChange} 
                                         // onKeyDown={(e) => {if (e.key === 'ArrowUp' || e.key === 'ArrowDown') e.preventDefault();}}
-                                        style={{width:'70px'}}
+                                       
                                     />
-                                    <button type="submit">Submit</button>
+                                    <button className='Trade-button' type="submit">Submit</button>
                             </form>
                         </div>
                 </>
             )}
+        </div>
         </div>
     );
 }

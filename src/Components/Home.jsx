@@ -2,19 +2,18 @@ import React from "react";
 import "../CSS/Home.css";
 import Ig from "../assets/photo1.png";
 import Card from "../Components/Card";
-import Footer from "../Components/Footer";
 import Pto4 from "../assets/photo4.png";
 import Pto11 from "../assets/photo11.png";
 import Pto10 from "../assets/photo10.png";
-import pto14 from "../assets/photo14.png";
-import pto8 from "../assets/photo8.png";
-import pto3 from "../assets/photo3.png";
-import pto15 from "../assets/photo15.png";
 import ptobg from "../assets/bgfarmer.png";
 import Card1 from "../Components/Card1";
+import Community from "../assets/Community.jpeg"
+import pictrade from "../assets/Trading.png"
+import price from "../assets/Price.jpeg"
+import cropdetection from "../assets/Crop-Detection.png"
 const Home = () => {
   return (
-    <>
+    <div>
       <div className="imag">
         <img src={Ig} alt="Image" />
         <div className="dark-overlay"></div>
@@ -24,9 +23,9 @@ const Home = () => {
         <h3>Want to do barganing?</h3>
       </div>
       <div className="cardhome-css">
-        <Card title="Whole Wheat" image={Pto4} />
-        <Card title="Whole Rice" image={Pto11} />
-        <Card title="Bajra" image={Pto10} />
+        <div><Card title="Whole Wheat" image={Pto4} /></div>
+        <div><Card title="Whole Rice" image={Pto11} /></div>
+        <div><Card title="Bajra" image={Pto10} /></div>
       </div>
       <div className="text1">
         <h1>-----What services we can offer you?-----</h1>
@@ -37,44 +36,44 @@ const Home = () => {
       </div>
       <div className="card1-css">
         <Card1
-          image={pto14}
-          title="corn"
-          description="ye hai corn "
-          price={20}
+          image={pictrade}
+          title="Trading System"
+          description="Elevate your farming experience: select, sell, and thrive with our innovative platform connecting farmers to the best crop choices and prices in their nearest mandi."
+      
+        />
+        <Card1 
+          image={price}
+          title=" Price Detection"
+          description="Empowering farmers with real-time market prices for their state district's nearest mandi, ensuring informed decision-making and optimal profitability"
+      
         />
         <Card1
-          image={pto15}
-          title="flower"
-          description="ye hai corn "
-          price={20}
+          image={cropdetection}
+          title="Crop Detection"
+          description="Utilizing advanced technology for precise crop detection, revolutionizing agricultural practices with accuracy and efficiency."
+      
         />
         <Card1
-          image={pto3}
-          title="vegi"
-          description="ye hai corn "
-          price={20}
-        />
-        <Card1
-          image={pto8}
-          title="carrot"
-          description="ye hai corn "
-          price={20}
+          image={Community}
+          title="Farmer Community "
+          description="Building a thriving farmer community through knowledge-sharing, support, and empowerment for sustainable agriculture. "
+         
         />
       </div>
       <div className="about_home">
         <h1 id="about-h">About us</h1>
       </div>
       <div className="about-all">
-      <div className="about-pleft">
-        <h3>Real Time price Detection </h3>
-        <p>Providing Real time data of price of 
-          every <br/> mandi and district<br/> </p>
-        <br />
-        <h3>Barganing System </h3>
-        <p>Sell your crop at your best price </p>
-        <br />
-        <h3>Crop Detection </h3>
-        <p>Enter The Data detect the crop </p>
+        <div className="about-pleft">
+          <h3>Real Time price Detection </h3>
+          <p>Providing Real time data of price of
+            every <br /> mandi and district<br /> </p>
+          <br />
+          <h3>Barganing System </h3>
+          <p>Sell your crop at your best price </p>
+          <br />
+          <h3>Crop Detection </h3>
+          <p>Enter The Data detect the crop </p>
         </div>
         <div className="about-mid">
           <h2 id="about-p1">Who we are?</h2>
@@ -92,8 +91,7 @@ const Home = () => {
           <p>Give your soil data and check which crop is best for your soil </p>
         </div>
       </div>
-      <Footer />
-    </>
+    </div>
   );
 };
 
