@@ -3,6 +3,9 @@ import axios from 'axios';
 import '../CSS/Trade.css';
 import { useState,useEffect } from 'react';
 import urlWithApiKey from '../projectApiKey/apiKey';
+import { getDocs,collection} from "firebase/firestore";
+import {addDoc} from "firebase/firestore";
+import { auth,db } from '../Firebase/config';
 
 const Trade=()=> {
 
@@ -153,7 +156,16 @@ const handleCropChange = (event) => {
 // Following code to enter and handle the crop price proposed by the user.
 const [cropValue, setCropValue] = useState('');
 
-    const handleSubmit = (event) => {
+
+    const handleCropValueChange = (event) => {
+        setCropValue(event.target.value);
+    };
+    
+
+    // Firebase code below:
+    const proposedCropCollectionRef=collection(db,"proposedCropPrices");
+
+    const handleSubmit = async(event) => {
         event.preventDefault();
 
         const enteredValue = parseInt(cropValue);
@@ -162,20 +174,44 @@ const [cropValue, setCropValue] = useState('');
             alert('Please enter a price from minimum to maximum range for this crop.');
             setCropValue('');
         } else {
-            alert('Your proposed price for '+selectedCrop+' : ' + enteredValue);
             // Here, I will implement the logic for submitting this price to database.
-
+            try{
+                await addDoc(proposedCropCollectionRef,{
+                    proposedPrice:cropValue,
+                    selectedCrop:selectedCrop,
+                    userId:auth?.currentUser?.uid,
+                });
+            }
+            catch(err){
+                alert(err);
+            }
+            alert('Your proposed price for '+selectedCrop+' : ' + enteredValue);
+            setCropValue('');
         }
-    };
 
-    const handleCropValueChange = (event) => {
-        setCropValue(event.target.value);
     };
-    
+    const postData = {
+        cropName:selectedCrop,
+        proposedPrice: cropValue
+      };
+
+    // To store data in a MongoDB Collection 
+    const handleSubmitMongoDB=(e)=>{
+    e.preventDefault(); 
+        axios.post('http://localhost:3737/v1/proposeCropPrice', postData)
+    .then(response => {
+      console.log('Response:', response.status);
+    })
+    .catch(error => {
+      console.error('Error:', error.response.data);
+    });
+
+    }
 
     return (
         <div className='container'>
-            <h1 className='title'>Want to know the price?</h1>
+            <h2 className='title'>🌱 Farmers: Nurturing the Earth's Pulse, Feeding the 🌍, Cultivating Tomorrow's 🌟.</h2>
+            <h4> Select your data parameters and send a request for the best crop at an unbeatable price.</h4>
             <div className="select-container">
                 <label htmlFor="state">Select State:</label>
                 <select id="state" value={selectedState} onChange={handleStateChange}>

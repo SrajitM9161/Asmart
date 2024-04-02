@@ -15,7 +15,9 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.15.12",
     "@mui/material": "^5.15.12",
+    "@tensorflow/tfjs": "^4.17.0",
     "axios": "^1.6.8",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.1",
     "firebase": "^10.8.1",
     "react": "^18.2.0",
@@ -34,5 +36,10 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.5",
     "vite": "^5.2.7"
-  }
+  },
+  "description": "Welcome to the Agrismart Project's Digital Bargaining System with Community for Farmers! This repository contains the source code and documentation for our innovative platform designed to empower farmers and revolutionize agricultural trade while fostering a supportive community for farmers.",
+  "main": "vite.config.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
 }
