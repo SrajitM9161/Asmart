@@ -3,8 +3,8 @@ import axios from 'axios';
 import '../CSS/Trade.css';
 import { useState,useEffect } from 'react';
 import urlWithApiKey from '../projectApiKey/apiKey';
-import { getDocs,collection} from "firebase/firestore";
-import {addDoc} from "firebase/firestore";
+// import { getDocs,collection} from "firebase/firestore";
+// import {addDoc} from "firebase/firestore";
 import { auth,db } from '../Firebase/config';
 
 const Trade=()=> {
@@ -24,6 +24,10 @@ const Trade=()=> {
     const [districts, setDistricts] = useState([]);
     const [markets, setMarkets] = useState([]);
     const [crops, setCrops] = useState([]);
+
+    // User Data
+    const[address,setAddress]=useState('');
+    const[userPhone,setUserPhone]=useState('');
 
     // Selected Crop Data
     const [minPrice,setMinPrice]=useState(0);
@@ -160,54 +164,106 @@ const [cropValue, setCropValue] = useState('');
     const handleCropValueChange = (event) => {
         setCropValue(event.target.value);
     };
+
+    
+    
     
 
     // Firebase code below:
-    const proposedCropCollectionRef=collection(db,"proposedCropPrices");
+    // const proposedCropCollectionRef=collection(db,"proposedCropPrices");
 
-    const handleSubmit = async(event) => {
-        event.preventDefault();
+    // const handleSubmit = async(event) => {
+    //     event.preventDefault();
 
-        const enteredValue = parseInt(cropValue);
+    //     const enteredValue = parseInt(cropValue);
 
-        if (isNaN(enteredValue) || enteredValue < minPrice || enteredValue > maxPrice) {
-            alert('Please enter a price from minimum to maximum range for this crop.');
-            setCropValue('');
-        } else {
-            // Here, I will implement the logic for submitting this price to database.
-            try{
-                await addDoc(proposedCropCollectionRef,{
-                    proposedPrice:cropValue,
-                    selectedCrop:selectedCrop,
-                    userId:auth?.currentUser?.uid,
-                });
-            }
-            catch(err){
-                alert(err);
-            }
-            alert('Your proposed price for '+selectedCrop+' : ' + enteredValue);
-            setCropValue('');
-        }
+    //     if (isNaN(enteredValue) || enteredValue < minPrice || enteredValue > maxPrice) {
+    //         alert('Please enter a price from minimum to maximum range for this crop.');
+    //         setCropValue('');
+    //     } else {
+    //         // Here, I will implement the logic for submitting this price to database.
+    //         try{
+    //             await addDoc(proposedCropCollectionRef,{
+    //                 proposedPrice:cropValue,
+    //                 selectedCrop:selectedCrop,
+    //                 userId:auth?.currentUser?.uid,
+    //             });
+    //         }
+    //         catch(err){
+    //             alert(err);
+    //         }
+    //         alert('Your proposed price for '+selectedCrop+' : ' + enteredValue);
+    //         setCropValue('');
+    //     }
 
+    // };
+
+    const handleAddressChange = (event) => {
+        setAddress(event.target.value);
+    };
+
+    const handlePhoneNumberChange = (event) => {
+        setUserPhone(event.target.value);
     };
     const postData = {
         cropName:selectedCrop,
-        proposedPrice: cropValue
+        proposedPrice: cropValue,
+        userName: auth.currentUser?auth.currentUser.displayName:'user',
+        userAddress:address,
+        userPhoneNum:userPhone
       };
 
     // To store data in a MongoDB Collection 
-    const handleSubmitMongoDB=(e)=>{
-    e.preventDefault(); 
-        axios.post('http://localhost:3737/v1/proposeCropPrice', postData)
-    .then(response => {
-      console.log('Response:', response.status);
-    })
-    .catch(error => {
-      console.error('Error:', error.response.data);
-    });
+    // const handleSubmitMongoDB=(e)=>{
+    // e.preventDefault(); 
+    // const enteredValue = parseInt(cropValue);
+    // if (isNaN(enteredValue) || enteredValue < minPrice || enteredValue > maxPrice) {
+    //             alert('Please enter a price from minimum to maximum range for this crop.');
+    //             setAddress('');
+    //             setCropValue('');
+    //             setUserPhone('');
+    //         } else {
+    //     axios.post('http://localhost:3737/v1/proposeCropPrice', postData);
+    //     alert("Price proposed successfully!!")
+        
+    // .then(response => {
+    //   console.log('Response:', response.status);
+    //             setCropValue('');
+    //             setAddress('');
+    //             setUserPhone('');
+    // })
+    // .catch(error => {
+    //   console.error('Error:', error.response.data);
+    // });
+    //     }
+    // }
 
+    const handleSubmitMongoDB = (e) => {
+        e.preventDefault();
+        const enteredValue = parseInt(cropValue);
+        if (isNaN(enteredValue) || enteredValue < minPrice || enteredValue > maxPrice) {
+            alert('Please enter a price from minimum to maximum range for this crop.');
+            setAddress('');
+            setCropValue('');
+            setUserPhone('');
+        } else {
+            try{
+            axios.post('http://localhost:3737/v1/proposeCropPrice', postData)
+            // .then(response => {
+                // console.log('Response:', response.status);
+                setAddress("");
+                setCropValue('');
+                setUserPhone('');
+                alert("Price proposed successfully!!");
+            // })
+            }catch(errr){
+                alert(errr);
+            }
+            // .catch(error => {
+                // console.error('Error:', error.response.data);
+            // });
     }
-
+}
     return (
         <div className='Trade-container'>
         <div className='container'>
@@ -273,7 +329,8 @@ const [cropValue, setCropValue] = useState('');
                             ))} */}
 
                             <h3> The Minimum Price = {minPrice} <br></br> The Maximum Price = {maxPrice}</h3>
-                            <form onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmitMongoDB}>
+                                <div className="cropUserInput">
                                     <label className='Trade-input-label' htmlFor="numberInput">Enter your price (from {minPrice} to {maxPrice}):</label>
                                     <input  className='Trade-input' placeholder='Enter Price '
                                         type="tel" 
@@ -285,6 +342,15 @@ const [cropValue, setCropValue] = useState('');
                                         // onKeyDown={(e) => {if (e.key === 'ArrowUp' || e.key === 'ArrowDown') e.preventDefault();}}
                                        
                                     />
+                                    
+                                    <label htmlFor="userAddress">Enter your address</label>
+                                    <input value={address}  type="text" className='Trade-input' id="userAddress" onChange={handleAddressChange} placeholder='Your address...' />
+                                    
+                                  
+
+                                    <label htmlFor="userPhone">Enter your phone number</label>
+                                    <input  value={userPhone} type="tel" className='Trade-input' id="userPhone" onChange={handlePhoneNumberChange} placeholder='Phone number...' />
+                                    </div>
                                     <button className='Trade-button' type="submit">Submit</button>
                             </form>
                         </div>

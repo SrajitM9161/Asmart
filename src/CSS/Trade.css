@@ -2,7 +2,12 @@
     background-color: rgb(231, 255, 247);
 }
 
-
+.cropUserInput{
+    display: flex;
+    flex-direction: row;
+    height: 2vw;
+  
+}
 .Trade-button {
     background-color: rgb(116, 181, 46);
     color: white; /* Text color */
@@ -33,6 +38,7 @@
     outline: 0;
     color: #111;
     font-size: 13px;
+    width: 100px;
     :focus{
         border-color: #e77600;
         box-shadow: 0 0 3px 2px rgb(228 121 17 / 50%);
