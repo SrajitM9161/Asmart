@@ -11,7 +11,13 @@ import Community from "../assets/Community.jpeg"
 import pictrade from "../assets/Trading.png"
 import price from "../assets/Price.jpeg"
 import cropdetection from "../assets/Crop-Detection.png"
+import { Navigate, useNavigate } from 'react-router-dom';
 const Home = () => {
+  const navigate = useNavigate();
+  const handleButtonClick_contact = () => {
+  
+    navigate("/contact");
+  };
   return (
     <div>
       <div className="imag">
@@ -20,7 +26,8 @@ const Home = () => {
       </div>
       <div className="text">
         <h1>Need more food? Need more farmers?</h1>
-        <h3>Want to do barganing?</h3>
+        <h3>Want To Know Your Soil Status ?</h3>
+        <button className="Home-Button" type="submit" onClick={handleButtonClick_contact}>Connect To know Your soil fertility</button>
       </div>
       <div className="cardhome-css">
         <div><Card title="Whole Wheat" image={Pto4} /></div>

@@ -31,7 +31,7 @@
 
 }
 
-.contact-content1, .contact-content2{
+.contact-content1, .contact-content2 {
     display: flex;
     flex-direction: column;
     font-size:1.5vw;
@@ -40,6 +40,13 @@
 
 }
 
+#Query{
+    font-size: 1.5vw;
+}
+
+textarea{
+    width: 50vw;
+}
 .contact-input-box{
     width: 70%;
     margin-top: 2vh;
