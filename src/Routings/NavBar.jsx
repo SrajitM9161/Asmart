@@ -15,7 +15,7 @@ const NavBar = () => {
   
   useEffect(()=>{
       const unsubscribe = auth.onAuthStateChanged(user => {
-        setCurrUser(user.email);
+        setCurrUser(user.displayName);
       });
       return()=>unsubscribe();
   },[]);
