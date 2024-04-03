@@ -3,8 +3,8 @@ import axios from 'axios';
 import '../CSS/Trade.css';
 import { useState,useEffect } from 'react';
 import urlWithApiKey from '../projectApiKey/apiKey';
-import { getDocs,collection} from "firebase/firestore";
-import {addDoc} from "firebase/firestore";
+// import { getDocs,collection} from "firebase/firestore";
+// import {addDoc} from "firebase/firestore";
 import { auth,db } from '../Firebase/config';
 
 const Trade=()=> {
