@@ -153,7 +153,7 @@ const CropDetection = () => {
             </div>
           </div>
           <input type="submit" id="submit" name="submit" value="RECOMMEND" className='prediction-btn' />
-          <div className='form-text2'>Learn more about <a href='#'>Harvesting</a></div>
+          <div className='form-text2'>Learn more about <a href='https://www.manage.gov.in/publications/farmerbook.pdf'>Harvesting</a></div>
         </form >
         {/* Display prediction or error message */}
         <div className="prediction-output">
