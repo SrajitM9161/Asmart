@@ -7,10 +7,10 @@ import '../CSS/Price.css';
 const Price = () => {
   return (
     <>
-    <div className='container-price'>
-      <div  className='price-css'>
-        <PAPI />
-      </div>
+      <div className='container-price'>
+        <div className='price-css'>
+          <PAPI />
+        </div>
       </div>
     </>
   );
