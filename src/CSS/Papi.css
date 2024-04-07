@@ -1,6 +1,6 @@
 .title {
   text-align: center;
-
+  color: white;
 }
 
 .select-container {
@@ -22,9 +22,19 @@ select {
 
 }
 
-.container {
-  text-align: center;
+.fill-opt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
 
+.papi-container {
+  text-align: center;
+}
+
+.papi-text {
+  color: white;
 }
 
 .filtered-records-container {
@@ -59,4 +69,3 @@ select {
   font-weight: bold;
   color: #888;
 }
-

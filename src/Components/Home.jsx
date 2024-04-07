@@ -15,7 +15,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 const Home = () => {
   const navigate = useNavigate();
   const handleButtonClick_contact = () => {
-  
+
     navigate("/contact");
   };
   return (
@@ -46,58 +46,43 @@ const Home = () => {
           image={pictrade}
           title="Trading System"
           description="Elevate your farming experience: select, sell, and thrive with our innovative platform connecting farmers to the best crop choices and prices in their nearest mandi."
-      
+
         />
-        <Card1 
+        <Card1
           image={price}
           title=" Price Detection"
           description="Empowering farmers with real-time market prices for their state district's nearest mandi, ensuring informed decision-making and optimal profitability"
-      
+
         />
         <Card1
           image={cropdetection}
           title="Crop Detection"
           description="Utilizing advanced technology for precise crop detection, revolutionizing agricultural practices with accuracy and efficiency."
-      
+
         />
         <Card1
           image={Community}
           title="Farmer Community "
           description="Building a thriving farmer community through knowledge-sharing, support, and empowerment for sustainable agriculture. "
-         
+
         />
       </div>
+
       <div className="about_home">
-        <h1 id="about-h">About us</h1>
-      </div>
-      <div className="about-all">
-        <div className="about-pleft">
-          <h3>Real Time price Detection </h3>
-          <p>Providing Real time data of price of
-            every <br /> mandi and district<br /> </p>
-          <br />
-          <h3>Barganing System </h3>
-          <p>Sell your crop at your best price </p>
-          <br />
-          <h3>Crop Detection </h3>
-          <p>Enter The Data detect the crop </p>
+        <div className="about-left">
+          <h1 id="about-h" className="about-h">About us</h1>
         </div>
-        <div className="about-mid">
-          <h2 id="about-p1">Who we are?</h2>
-          <p id="about-p2"> Welcome to our world where Farmey revolutionizes agriculture by integrating buying, selling, <br />and predictive crop pricing with cutting-edge soil detection technology! Unearth the future  <br />of farming with us at Farmey! 🚀</p>
-          <img id="about_image" src={ptobg} alt="image" />
-        </div>
-        <div className="about-pright">
-          <h3>Farmer Community </h3>
-          <p>All Farmers can Talk and Expert farmers give solution</p>
-          <br />
-          <h3>Market Price data </h3>
-          <p>Real Time district Market Wise Price</p>
-          <br />
-          <h3>Best Crop according to soil </h3>
-          <p>Give your soil data and check which crop is best for your soil </p>
+        <div className="about-right">
+          <p>
+            Agrismart is a on hand delievery , organic Agriculture website.
+            We provide organic reliable and chepest product based on the quality and quantity of the item.
+          </p>
+          <div className="about-img">
+            <img src="src\assets\farmervector4.png" alt="farmerImage" />
+          </div>
         </div>
       </div>
+
     </div>
   );
 };

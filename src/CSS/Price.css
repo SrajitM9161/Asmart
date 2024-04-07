@@ -1,10 +1,12 @@
-.price-css{
-    background-image: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
-    padding: 150px;
+.container-price {
+    /* background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/photo7.png') background-size: cover; */
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../assets/photo7.png');
+    background-size:cover;
+    padding: 10em;
 }
-  
-  
 
-  
-  
-  
+@media(max-width:500px){
+    .container-price{
+        padding: 2em;
+    }
+}
