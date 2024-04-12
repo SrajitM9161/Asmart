@@ -100,12 +100,13 @@ const PAPI = () => {
                     </select>
                 </div>
             </div>
+            <hr />
             {selectedState === "" || selectedDistrict === "" || selectedMarket === "" ? (
                 <div className='papi-text'>Please select your state, district, and market.</div>
             ) : (
                 <>
                     {filteredRecords.length > 0 ? (
-                        <div className="filtered-records-container">
+                        <div className="Price-filtered-records-container">
                             <h2>Filtered Records:</h2>
                             <table id="records-table">
                                 <thead>
