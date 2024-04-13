@@ -64,3 +64,24 @@ select {
   font-weight: bold;
   color: #656565;
 }
+
+
+@media only screen and (max-width: 850px) {
+  #records-table {
+    overflow-x: auto;
+
+    font-size: 0.8rem;
+  }
+
+  #records-table th,
+  #records-table td {
+    
+    &:nth-child(2),
+    &:nth-child(5),
+    &:nth-child(6) {
+      display: none;
+    }
+  }
+}
+
+
