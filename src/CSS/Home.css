@@ -1,41 +1,37 @@
-.imag {
+.home-top {
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+  background-image: url('../assets/photo1.png');
+  background-size: cover;
+  height: 25em;
   width: 100%;
+  box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
 }
 
-.imag img {
-  display: block;
-  width: 100%;
-  height: auto;
-}
-
-.dark-overlay {
+.home-top::before {
+  content: "";
   position: absolute;
   top: 0;
+  right: 0;
+  bottom: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.6);
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.home-top div {
   z-index: 1;
-}
-
-.text {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   text-align: center;
-  color: #fff;
-  z-index: 2;
-}
-
-footer {
-  padding-top: 1px;
+  margin: 0 2em;
 }
 
 .text1 {
   text-align: center;
   font-size: large;
+  margin: 2em;
 }
 
 .cardhome-css {
@@ -47,7 +43,7 @@ footer {
   justify-content: center;
   z-index: 2;
   position: relative;
-  top: -3em;
+  top: -2em;
 }
 
 .cardhome-css>*image {
@@ -75,7 +71,7 @@ footer {
 .about_home {
   display: flex;
   justify-content: space-around;
-  margin: 2em 2em 0 2em;
+  margin: 3em 5em 0 5em;
   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 }
 
@@ -107,7 +103,7 @@ footer {
 
 .about-img {
   text-align: right;
-  margin-right: -2em;
+  margin-right: -1em;
 }
 
 .card1-css {
@@ -116,46 +112,49 @@ footer {
 
 
 .Home-Button {
-  display: inline-block;
-  outline: none;
-  cursor: pointer;
-  font-size: 14px;
-  line-height: 1;
-  border-radius: 500px;
+  font-size: 1em;
+  border-radius: 50px;
   transition-property: background-color, border-color, color, box-shadow, filter;
   transition-duration: .3s;
-  border: 1px solid transparent;
-  letter-spacing: 2px;
-  min-width: 160px;
+  border: none;
+  letter-spacing: 1.5px;
   text-transform: uppercase;
   white-space: normal;
   font-weight: 700;
   text-align: center;
-  padding: 17px 48px;
+  padding: 1em 3em;
   color: #fff;
   background-color: #1ED760;
-  height: 48px;
+  cursor: pointer;
+}
 
-  :hover {
-    transform: scale(1.04);
-    background-color: #21e065;
-  }
+.Home-Button:hover {
+  transform: scale(1.04);
+  background-color: #14843b;
 }
 
 @media (max-width:1000px) {
+  .Home-Button {
+    padding: 10px 1em;
+  }
+
   .about_home {
     flex-direction: column;
     justify-content: center;
+    margin: 2em 1em 0 1em;
   }
-  .about-left{
+
+  .about-left {
     /* background: none; */
     width: auto;
   }
-  .about-h{
+
+  .about-h {
     color: #000;
     font-size: 3em;
   }
-  .about-right{
+
+  .about-right {
     width: auto;
   }
 }
