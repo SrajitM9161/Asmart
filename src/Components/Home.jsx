@@ -20,20 +20,21 @@ const Home = () => {
   };
   return (
     <div>
-      <div className="imag">
-        <img src={Ig} alt="Image" />
-        <div className="dark-overlay"></div>
+      <div className="home-top">
+        <div>
+          <h1>Need more food? Need more farmers?</h1>
+          <h3>Want To Know Your Soil Status?</h3>
+          <button className="Home-Button" type="submit" onClick={handleButtonClick_contact}>Connect To know Your soil fertility</button>
+        </div>
       </div>
       <div className="text">
-        <h1>Need more food? Need more farmers?</h1>
-        <h3>Want To Know Your Soil Status ?</h3>
-        <button className="Home-Button" type="submit" onClick={handleButtonClick_contact}>Connect To know Your soil fertility</button>
       </div>
       <div className="cardhome-css">
         <div><Card title="Whole Wheat" image={Pto4} /></div>
         <div><Card title="Whole Rice" image={Pto11} /></div>
         <div><Card title="Bajra" image={Pto10} /></div>
       </div>
+      <hr />
       <div className="text1">
         <h1>-----What services we can offer you?-----</h1>
         <p>
@@ -67,7 +68,7 @@ const Home = () => {
 
         />
       </div>
-
+      <hr />
       <div className="about_home">
         <div className="about-left">
           <h1 id="about-h" className="about-h">About us</h1>
