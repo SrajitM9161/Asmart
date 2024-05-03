@@ -11,6 +11,7 @@ import Community from "../assets/Community.jpeg"
 import pictrade from "../assets/Trading.png"
 import price from "../assets/Price.jpeg"
 import cropdetection from "../assets/Crop-Detection.png"
+import Farmervector from "../assets/farmervector4.png"
 import { Navigate, useNavigate } from 'react-router-dom';
 const Home = () => {
   const navigate = useNavigate();
@@ -79,7 +80,7 @@ const Home = () => {
             We provide organic reliable and chepest product based on the quality and quantity of the item.
           </p>
           <div className="about-img">
-            <img src="src\assets\farmervector4.png" alt="farmerImage" />
+            <img src={Farmervector} alt="farmerImage" />
           </div>
         </div>
       </div>

@@ -28,7 +28,7 @@ const CropDetection = () => {
     const formattedFormData = new URLSearchParams(formData).toString();
     console.log('Formatted Form Data:', formattedFormData);  // Log formatted form data
     try {
-      const res = await axios.post('http://localhost:5000/form', formattedFormData, {
+      const res = await axios.post('https://asmart-n4tm-srajitm9161s-projects.vercel.app/', formattedFormData, {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
