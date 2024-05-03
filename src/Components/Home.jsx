@@ -76,8 +76,8 @@ const Home = () => {
         </div>
         <div className="about-right">
           <p>
-            Agrismart is a on hand delievery , organic Agriculture website.
-            We provide organic reliable and chepest product based on the quality and quantity of the item.
+            Agrismart is a on hand delivery , organic Agriculture website.
+            We provide organic reliable and cheapest product based on the quality and quantity of the item.
           </p>
           <div className="about-img">
             <img src={Farmervector} alt="farmerImage" />
