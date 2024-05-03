@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import Weather from '../Wheather/Wheather'
 import {auth} from '../Firebase/config';  
 import {signOut} from "firebase/auth";
-
+import Logo from "../assets/LogoAg.png"
 const NavBar = () => {
 
   const [isMobile, setIsMobile] = useState(false);
@@ -45,7 +45,7 @@ const NavBar = () => {
     <div className={`navbar ${isMobile ? 'mobile' : ''}`}>
 
       <div className="logos">
-        <img src="src\assets\LogoAg.png" alt='logo'></img>
+        <img src={Logo} alt='logo'></img>
         <h2>AGRISMART</h2>
 
         <div className='weather-info'>
