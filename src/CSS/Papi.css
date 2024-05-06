@@ -1,6 +1,5 @@
 .title {
   text-align: center;
-
 }
 
 .select-container {
@@ -22,12 +21,18 @@ select {
 
 }
 
-.container {
-  text-align: center;
-
+.fill-opt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.filtered-records-container {
+.papi-container {
+  text-align: center;
+}
+
+.Price-filtered-records-container {
   margin: 20px auto;
   width: 70%;
 }
@@ -57,6 +62,26 @@ select {
   margin-top: 20px;
   font-size: 18px;
   font-weight: bold;
-  color: #888;
+  color: #656565;
 }
+
+
+@media only screen and (max-width: 850px) {
+  #records-table {
+    overflow-x: auto;
+
+    font-size: 0.8rem;
+  }
+
+  #records-table th,
+  #records-table td {
+    
+    &:nth-child(2),
+    &:nth-child(5),
+    &:nth-child(6) {
+      display: none;
+    }
+  }
+}
+
 
