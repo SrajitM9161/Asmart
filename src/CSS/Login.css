@@ -1,153 +1,167 @@
-.login{
+.login {
     background-color: palegoldenrod;
     display: flex;
     flex-direction: row;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 /* ------------------- left half --------------------- */
 
-.leftHalf{
-background-color: white;
-width: 50%;
+.leftHalf {
+    background-color: white;
+    width: 50%;
 }
 
-.greetLogin{
+.greetLogin {
     color: rgb(24, 88, 24);
 }
 
-.loginArea{
+.loginArea {
     /* width: 80%; */
     /* background-color: rgb(159, 199, 177); */
     display: flex;
     flex-direction: column;
-    align-items: center; 
+    align-items: center;
 }
 
 /* .----------------- select user or admin --------------- */
-.userSelect{
+.userSelect {
     border: solid;
-    display:flex;
+    display: flex;
     flex-direction: row;
     justify-content: space-around;
     width: 35%;
     border-radius: 15px;
 }
 
-.user ,.adminUser{
+.user,
+.adminUser {
     padding-top: 2px;
     padding-bottom: 2px;
 }
 
-.userSelect button{
+.userSelect button {
     background-color: white;
     border-radius: 15px;
     border: none;
 }
-.userSelect button:hover{
+
+.userSelect button:hover {
     cursor: pointer;
 }
 
-.actives button{           
-    background-color: darkgreen;     
+.actives button {
+    background-color: darkgreen;
     color: white;
     border: none;
 }
 
 /* ------------- Actual username and password space ------*/
 
-.loginForm{
+.loginForm {
     padding-top: 10px;
 }
-.loginForm p{
+
+.loginForm p {
     margin: 0;
     padding-bottom: 5px;
 }
-.loginForm input{
+
+.loginForm input {
     border: none;
     border-bottom: solid;
 }
-.loginForm input:focus{
-  outline: none;
+
+.loginForm input:focus {
+    outline: none;
 }
-.names,.pw,.showPw{
+
+.names,
+.pw,
+.showPw {
     padding-top: 10px;
 }
-.showPw label:hover, .showPw input:hover{
+
+.showPw label:hover,
+.showPw input:hover {
     cursor: pointer;
 }
 
-.forgetPw{
+.forgetPw {
     padding-top: 10px;
     display: flex;
     flex-direction: row;
-    justify-content:space-between;
+    justify-content: space-between;
     align-items: center;
 }
-.forgetPw button{
+
+.forgetPw button {
     background-color: green;
     color: white;
     border: none;
     padding: 10px;
     border-radius: 5px;
 }
-.forgetPw button:hover{
+
+.forgetPw button:hover {
     cursor: pointer;
 }
-.forgetPw a{
+
+.forgetPw a {
     color: green;
-    text-decoration:underline;
+    text-decoration: underline;
 }
 
-.loginGoogle{
+.loginGoogle {
     display: flex;
     flex-direction: column;
     align-items: start;
     font-size: large;
     /* font-weight: bold; */
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
-}
-.loginGoogle img{
-    position: relative;
-    top:5px;
-    width: 2vw;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
 }
 
-.loginGoogle img:hover{
+.loginGoogle img {
+    position: relative;
+    top: 5px;
+    width: 3.5vh;
+}
+
+.loginGoogle img:hover {
     cursor: pointer;
 }
 
 
 
-.signup p{
+.signup p {
     margin-top: 0;
     font-size: large;
     color: green;
 }
 
-.signup a{
+.signup a {
     color: rgb(21, 50, 21);
     font-weight: 700;
 }
 
-.signup h3{
+.signup h3 {
     display: inline;
     font-size: large;
 }
 
 /* ------------------- right half --------------------- */
-.rightHalf{
-background-color: rgb(52, 123, 52);
-width: 50%;
-border: 1px solid;
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-color: white;
-animation: glow 2s infinite; 
+.rightHalf {
+    background-color: rgb(52, 123, 52);
+    width: 50%;
+    border: 1px solid;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    color: white;
+    animation: glow 2s infinite;
 }
 
-.cross{
+.cross {
     position: fixed;
     right: 10px;
     top: 10px;
@@ -158,19 +172,21 @@ animation: glow 2s infinite;
     font-size: 3vh;
     cursor: pointer;
 }
-.cross p{
+
+.cross p {
     margin: 0;
 }
-.name2{
-text-align: center;
+
+.name2 {
+    text-align: center;
 }
 
-.imgFarm{
+.imgFarm {
     position: relative;
     right: 60px;
 }
 
-.rightHalf img{
+.rightHalf img {
     width: 90%;
     height: 350px;
 }
@@ -179,12 +195,101 @@ text-align: center;
 /* For right half glow */
 @keyframes glow {
     0% {
-      text-shadow: 0 0 5px #a1a9a1, 0 0 10px #b2c4b2, 0 0 15px #cfdecf;
+        text-shadow: 0 0 5px #a1a9a1, 0 0 10px #b2c4b2, 0 0 15px #cfdecf;
     }
+
     50% {
-      text-shadow: 0 0 10px #c5d3c5, 0 0 20px #889488, 0 0 30px #aab7aa;
+        text-shadow: 0 0 10px #c5d3c5, 0 0 20px #889488, 0 0 30px #aab7aa;
     }
+
     100% {
-      text-shadow: 0 0 5px #c3ccc3, 0 0 10px #b3c3b3, 0 0 15px #b2c1b2;
+        text-shadow: 0 0 5px #c3ccc3, 0 0 10px #b3c3b3, 0 0 15px #b2c1b2;
     }
-  }
+}
+
+/* test
+
+/* Left half styles */
+.leftHalf {
+    background-color: white;
+    width: 100%;
+    /* Full width on mobile */
+}
+
+
+/* Right half styles */
+.rightHalf {
+    background-color: rgb(52, 123, 52);
+    width: 100%;
+    padding: 20px;
+    text-align: center;
+}
+
+.rightHalf img {
+    max-width: 100%;
+    /* height: auto; */
+}
+
+/* Media query for responsiveness */
+@media only screen and (min-width: 480px) {
+
+    /* Tablet and larger devices */
+    .login {
+        flex-direction: row;
+    }
+
+    .leftHalf {
+        width: 50%;
+    }
+
+    .rightHalf {
+        width: 50%;
+    }
+
+    .rightHalf img {
+        max-width: 90%;
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+}
+
+
+
+
+@media only screen and (max-width: 480px) {
+
+
+    
+
+    .login {
+        flex-direction: column;
+    }
+
+    .leftHalf,
+    .rightHalf {
+        width: 100%;
+    }
+    .rightHalf{
+        display: none;
+    }
+
+    .loginArea {
+        padding: 20px;
+        overflow-y: auto;
+        /* max-height: vh; */
+        
+    }
+
+    .footer {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+    }
+
+}

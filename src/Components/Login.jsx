@@ -143,7 +143,7 @@ const Login = ()=>{
                     </form>
 
                     <div className="loginGoogle">
-                        <p>Or Login with <img onClick={handleGoogleSignup} src="https://cdn-icons-png.flaticon.com/128/2335/2335397.png" alt="" srcset="" /></p>
+                        <p>Or Login with <img onClick={handleGoogleSignup} src="https://cdn-icons-png.flaticon.com/128/2335/2335397.png" className="google" alt="" srcset="" /></p>
                     </div>
 
                     <div className="signup">
@@ -164,7 +164,7 @@ const Login = ()=>{
                 </div>
 
                 <div className="imgFarm">
-                    <img src={imgFarmer} alt="" srcset="" />
+                    <img src={imgFarmer} className="farmerImage" alt="" srcset="" />
                 </div>
 
             </div>
