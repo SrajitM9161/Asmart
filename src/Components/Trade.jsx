@@ -1,11 +1,12 @@
-import React from 'react';
 import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 import '../CSS/Trade.css';
-import { useState, useEffect } from 'react';
 import urlWithApiKey from '../projectApiKey/apiKey';
 // import { getDocs,collection} from "firebase/firestore";
 // import {addDoc} from "firebase/firestore";
-import { auth, db } from '../Firebase/config';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import { auth } from '../Firebase/config';
 
 const Trade = () => {
 
@@ -40,6 +41,14 @@ const Trade = () => {
 
 
     // Getting data from api and setting the state lists.
+    useEffect(()=>{
+        const currentTime = new Date();
+        const currentHour = currentTime.getHours();
+        if (currentHour >= 17 || currentHour < 6) {
+            toast.warning("The market is closed from 5:00 PM to 9:00 AM.");
+        }
+    },[])
+
     useEffect(() => {
         axios.get(urlWithApiKey)
             .then(response => {
@@ -234,6 +243,7 @@ const Trade = () => {
     }
     return (
         <div className='Trade-container'>
+            <ToastContainer/>
             <h3 className='title'>🌱 Farmers: Nurturing the Earth's Pulse, Feeding the 🌍, Cultivating Tomorrow's 🌟.</h3>
             <h4> Select your data parameters and send a request for the best crop at an unbeatable price.</h4>
             <div className="input-container">
@@ -327,6 +337,7 @@ const Trade = () => {
                     </div>
                 </>
             )}
+        
         </div>
     );
 }

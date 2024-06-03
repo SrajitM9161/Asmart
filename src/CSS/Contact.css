@@ -2,7 +2,6 @@
     display: flex;
     width: 60vw;
     border-top:15px solid #184109;
-    /* padding: 0px; */
     margin: 44px;
     max-width: 60vw;
     margin-left: 10vw;
@@ -13,7 +12,6 @@
     font-size: 3vw;
     margin-top: 1.5vw;
     margin-bottom: 1.5vw;
-    /* text-align: left; */
     font-family: sans-serif;
 }
 
@@ -25,7 +23,6 @@
 .contact-content{
     display: flex;
     flex-direction: row;
-    /* justify-content: center; */
     align-content: flex-start;
     text-align: left;
 
@@ -84,5 +81,101 @@ textarea{
     scale: 1.1 ;
     transition: 1ms;
     cursor: pointer;
+}
 
+
+
+/* Media Query for Tablets and Phones */
+@media screen and (max-width: 767px) {
+    .contact-heading {
+        font-size: 28px;
+    }
+    .contact-subheading {
+        font-size: 18px; 
+    }
+    .contact-container {
+        width: 90%;
+        max-width: 400px; 
+    }
+    .contact-subheading, #FAddress, #PhoneNumber, #Fname, #Query, #Landmark, #Adhar, #Email {
+        font-size: 14px;
+    }
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    width: 90%; 
+    max-width: 500px; 
+    margin: 20px auto; 
+    padding: 20px;
+    border: 2px solid #184109;
+    border-radius: 15px;
+}
+
+.contact-heading {
+    font-size: 24px; 
+    margin: 10px 0;
+    text-align: center; 
+}
+
+.contact-subheading {
+    font-size: 14px; 
+    font-weight: bold;
+    text-align: center; 
+}
+
+.contact-content {
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-content1, .contact-content2 {
+    width: 100%; 
+}
+
+.contact-input-box {
+    margin-bottom: 20px;
+}
+
+.contact-container input,
+.contact-container textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px; 
+}
+
+.button-contact-container {
+    text-align: center; /* Center align button */
+}
+
+.contact-submitButton {
+    background: #DEA30ED6;
+    border: none;
+    border-radius: 15px;
+    font-size: 18px; /* Larger font size for button */
+    padding: 12px 20px;
+    font-weight: bold;
+    cursor: pointer;
+}
+}
+
+/* Media Query for Smaller Phones */
+@media screen and (max-width: 480px) {
+    .contact-heading {
+        font-size: 24px; /* Further adjusted font size for smaller screens */
+    }
+    .contact-subheading {
+        font-size: 14px; /* Further adjusted font size for smaller screens */
+    }
+    .contact-container {
+        padding: 10px; /* Reduced padding for smaller screens */
+    }
+    .contact-submitButton {
+        font-size: 16px; /* Adjusted font size for smaller screens */
+    }
+    #FAddress, #PhoneNumber, #Fname, #Query, #Landmark, #Adhar, #Email {
+        font-size: 14px;
+    }
 }

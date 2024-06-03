@@ -1,18 +1,19 @@
 import React from 'react'
-import NavBar from './Routings/NavBar'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import Admin from './Components/Admin'
+import Cart from './Components/Cart'
+import Contact from './Components/Contact'
+import CropDetection from './Components/CropDetection'
 import Footer from './Components/Footer'
 import Home from './Components/Home'
-import Price from './Components/Price'
-import Cart from './Components/Cart'
-import Trade from './Components/Trade'
-import Contact from './Components/Contact'
 import Login from './Components/Login'
+import Price from './Components/Price'
 import Signup from './Components/Signup'
-import Admin from './Components/Admin'
-import CropDetection from './Components/CropDetection'
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Trade from './Components/Trade'
+import NavBar from './Routings/NavBar'
 
 const App = () => {
+  
   return (
     <>
       <BrowserRouter>
@@ -29,7 +30,7 @@ const App = () => {
           <Route path='/signup' element={<Signup />}></Route>
           <Route path='/admin' element={<Admin />}></Route>
         </Routes>
-
+        
         <Footer className='footer'/>
       </BrowserRouter>
     </>

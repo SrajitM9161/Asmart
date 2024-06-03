@@ -11,6 +11,7 @@ import Community from "../assets/Community.jpeg"
 import pictrade from "../assets/Trading.png"
 import price from "../assets/Price.jpeg"
 import cropdetection from "../assets/Crop-Detection.png"
+import Farmervector from "../assets/farmervector4.png"
 import { Navigate, useNavigate } from 'react-router-dom';
 const Home = () => {
   const navigate = useNavigate();
@@ -75,11 +76,11 @@ const Home = () => {
         </div>
         <div className="about-right">
           <p>
-            Agrismart is a on hand delievery , organic Agriculture website.
-            We provide organic reliable and chepest product based on the quality and quantity of the item.
+            Agrismart is a on hand delivery , organic Agriculture website.
+            We provide organic reliable and cheapest product based on the quality and quantity of the item.
           </p>
           <div className="about-img">
-            <img src="src\assets\farmervector4.png" alt="farmerImage" />
+            <img src={Farmervector} alt="farmerImage" />
           </div>
         </div>
       </div>
