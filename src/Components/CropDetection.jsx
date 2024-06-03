@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import LinearProgress from '@mui/material/LinearProgress';
 import "../CSS/CropDetection.css";
 
 const CropDetection = () => {
@@ -14,6 +15,7 @@ const CropDetection = () => {
   });
   const [prediction, setPrediction] = useState('');
   const [error, setError] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -25,14 +27,18 @@ const CropDetection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formattedFormData = new URLSearchParams(formData).toString();
-    console.log('Formatted Form Data:', formattedFormData);  // Log formatted form data
+    setLoading(true);
+    const formattedFormData = {
+      Nitrogen: formData.Nitrogen,
+      Phosphorus: formData.Phosphorus,
+      Potassium: formData.Potassium,
+      Temperature: formData.Temperature,
+      Humidity: formData.Humidity,
+      ph: formData.ph,
+      Rainfall: formData.Rainfall,
+    };
     try {
-      const res = await axios.post('http://localhost:5000/form', formattedFormData, {
-        headers: {
-          'Content-Type': 'application/x-www-form-urlencoded',
-        },
-      });
+      const res = await axios.post('http://localhost:3737/predict', formattedFormData);
       if (res.status === 200) {
         if (res.data.prediction) {
           setPrediction(res.data.prediction);
@@ -48,15 +54,15 @@ const CropDetection = () => {
       console.error('Error predicting crop:', err);
       setError('Error predicting crop. Please try again.');
     }
+    setLoading(false);
   };
-
 
   return (
     <div>
       <h2 className='crop-heading'>Grow the Crop Best Suited for your Enviroment.</h2>
       <div className="crop-detection">
         <form onSubmit={handleSubmit} className='crop-detection-form'>
-          <div className='form-text1'>Fill the details:</div>
+          <div className='form-text1'>Fill the Details:</div>
           <div className="detail-form">
             {/* Input fields */}
             <div className="detail-box">
@@ -158,8 +164,14 @@ const CropDetection = () => {
         {/* Display prediction or error message */}
         <div className="prediction-output">
           <h1>Crop Recommended</h1>
-          {prediction && <h4 className='prediction-output-text'>The best crops for this season are: <br/><br/>{prediction}</h4>}
-          {error && <p className="error">{error}</p>}
+          {loading ? (
+            <LinearProgress />
+          ) : (
+            <>
+              {prediction && <h4 className='prediction-output-text'>The best crops for this season are: <br /><br /><h3 style={{fontStyle: 'italic'}}>{prediction}</h3></h4>}
+              {error && <p className="error">{error}</p>}
+            </>
+          )}
         </div >
       </div>
     </div >
