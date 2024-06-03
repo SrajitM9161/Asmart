@@ -224,7 +224,7 @@ const Trade = () => {
                 userPhoneNum: userPhone
             };
             try {
-                axios.post('http://localhost:3737/v1/proposeCropPrice', postData)
+                axios.post('https://asmart-9.onrender.com/v1/proposeCropPrice', postData)
                     .then(response => {
                         console.log('Response:', response.status);
                         setSelectedState('');
