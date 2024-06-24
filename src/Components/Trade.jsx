@@ -2,52 +2,32 @@ import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import '../CSS/Trade.css';
 import urlWithApiKey from '../projectApiKey/apiKey';
-// import { getDocs,collection} from "firebase/firestore";
-// import {addDoc} from "firebase/firestore";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { auth } from '../Firebase/config';
 
 const Trade = () => {
-
-    // For the starting api call to locate Indian states available.
     const [records, setRecords] = useState([]);
-
-    // For the option selected by user
     const [selectedState, setSelectedState] = useState('');
     const [selectedDistrict, setSelectedDistrict] = useState('');
     const [selectedMarket, setSelectedMarket] = useState('');
     const [selectedCrop, setSelectedCrop] = useState('');
-
-    // For storing the records in an array to show in drop down for selecting.
     const [filteredRecords, setFilteredRecords] = useState([]);
     const [states, setStates] = useState([]);
     const [districts, setDistricts] = useState([]);
     const [markets, setMarkets] = useState([]);
     const [crops, setCrops] = useState([]);
-
-    // Selected Crop Data
     const [minPrice, setMinPrice] = useState(0);
     const [maxPrice, setMaxPrice] = useState(0);
-    // const [arrivalDate,setArrivalDate]=useState(Date);
-
-    // Following code to enter and handle the crop price proposed by the user.
     const [cropValue, setCropValue] = useState('');
-
-    // User Data
     const [address, setAddress] = useState('');
     const [userPhone, setUserPhone] = useState('');
 
-
-
-    // Getting data from api and setting the state lists.
-    useEffect(()=>{
+    useEffect(() => {
         const currentTime = new Date();
         const currentHour = currentTime.getHours();
-        if (currentHour >= 17 || currentHour < 6) {
-            toast.warning("The market is closed from 5:00 PM to 9:00 AM.");
-        }
-    },[])
+       
+    }, []);
 
     useEffect(() => {
         axios.get(urlWithApiKey)
@@ -57,10 +37,12 @@ const Trade = () => {
                 const uniqueStates = Array.from(new Set(data.map(record => record.state)));
                 setStates(uniqueStates);
             })
-            .catch(error => alert('Error fetching data:', error));
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                toast.error('Hey user please come later because Market is closed');
+            });
     }, []);
 
-    // For setting the districts array to choose from drop down.
     useEffect(() => {
         if (selectedState) {
             const uniqueDistricts = Array.from(new Set(records.filter(record => record.state === selectedState).map(record => record.district)));
@@ -68,7 +50,6 @@ const Trade = () => {
         }
     }, [selectedState, records]);
 
-    // For setting the markets array to choose from drop down.
     useEffect(() => {
         if (selectedState && selectedDistrict) {
             const uniqueMarkets = Array.from(new Set(records.filter(record => record.state === selectedState && record.district === selectedDistrict).map(record => record.market)));
@@ -76,7 +57,6 @@ const Trade = () => {
         }
     }, [selectedState, selectedDistrict, records]);
 
-    // For setting the crops array to choose from drop down. ------------> Added extra other than PRICE API.
     useEffect(() => {
         if (selectedState && selectedDistrict && selectedMarket) {
             const uniqueCrops = Array.from(new Set(records.filter(record => record.state === selectedState && record.district === selectedDistrict && record.market === selectedMarket).map(record => record.commodity)));
@@ -84,20 +64,16 @@ const Trade = () => {
         }
     }, [selectedState, selectedDistrict, selectedMarket, records]);
 
-    // filtered options.
     useEffect(() => {
         const filtered = records.filter(record =>
             (!selectedState || record.state === selectedState) &&
             (!selectedDistrict || record.district === selectedDistrict) &&
             (!selectedMarket || record.market === selectedMarket) &&
-            (!selectedCrop || record.crop === selectedCrop)
+            (!selectedCrop || record.commodity === selectedCrop)
         );
         setFilteredRecords(filtered);
-    }, [selectedState, selectedDistrict, selectedMarket, records]);
+    }, [selectedState, selectedDistrict, selectedMarket, selectedCrop, records]);
 
-
-
-    // Handling the state changes for state, district, market and crop change.
     const handleStateChange = (event) => {
         const state = event.target.value;
         setSelectedState(state);
@@ -113,24 +89,18 @@ const Trade = () => {
         setSelectedCrop('');
     };
 
-    // Added another state for crops change.
     const handleMarketChange = (event) => {
         setSelectedMarket(event.target.value);
         setSelectedCrop('');
     };
 
-    // Creating function to get min and max price of selected crop.
     const recordsMap = new Map();
     filteredRecords.forEach(record => recordsMap.set(record.commodity, record));
 
     const handleCropChange = (event) => {
         const cropSel = event.target.value;
         setSelectedCrop(cropSel);
-
-        // Retrieve the record directly from the map
         const matchedRecord = recordsMap.get(cropSel);
-
-        // Check if a matching record was found
         if (matchedRecord) {
             setMinPrice(matchedRecord.min_price);
             setMaxPrice(matchedRecord.max_price);
@@ -141,7 +111,6 @@ const Trade = () => {
         setCropValue(event.target.value);
     };
 
-
     const handleAddressChange = (event) => {
         setAddress(event.target.value);
     };
@@ -150,70 +119,11 @@ const Trade = () => {
         setUserPhone(event.target.value);
     };
 
-
-
-    // Firebase code below:
-    // const proposedCropCollectionRef=collection(db,"proposedCropPrices");
-
-    // const handleSubmit = async(event) => {
-    //     event.preventDefault();
-
-    //     const enteredValue = parseInt(cropValue);
-
-    //     if (isNaN(enteredValue) || enteredValue < minPrice || enteredValue > maxPrice) {
-    //         alert('Please enter a price from minimum to maximum range for this crop.');
-    //         setCropValue('');
-    //     } else {
-    //         // Here, I will implement the logic for submitting this price to database.
-    //         try{
-    //             await addDoc(proposedCropCollectionRef,{
-    //                 proposedPrice:cropValue,
-    //                 selectedCrop:selectedCrop,
-    //                 userId:auth?.currentUser?.uid,
-    //             });
-    //         }
-    //         catch(err){
-    //             alert(err);
-    //         }
-    //         alert('Your proposed price for '+selectedCrop+' : ' + enteredValue);
-    //         setCropValue('');
-    //     }
-
-    // };
-
-
-
-    // To store data in a MongoDB Collection 
-    // const handleSubmitMongoDB=(e)=>{
-    // e.preventDefault(); 
-    // const enteredValue = parseInt(cropValue);
-    // if (isNaN(enteredValue) || enteredValue < minPrice || enteredValue > maxPrice) {
-    //             alert('Please enter a price from minimum to maximum range for this crop.');
-    //             setAddress('');
-    //             setCropValue('');
-    //             setUserPhone('');
-    //         } else {
-    //     axios.post('http://localhost:3737/v1/proposeCropPrice', postData);
-    //     alert("Price proposed successfully!!")
-
-    // .then(response => {
-    //   console.log('Response:', response.status);
-    //             setCropValue('');
-    //             setAddress('');
-    //             setUserPhone('');
-    // })
-    // .catch(error => {
-    //   console.error('Error:', error.response.data);
-    // });
-    //     }
-    // }
-
-
     const handleSubmitMongoDB = (e) => {
         e.preventDefault();
         const enteredValue = parseInt(cropValue);
         if (isNaN(enteredValue) || enteredValue < minPrice || enteredValue > maxPrice) {
-            alert('Please enter a price from minimum to maximum range for this crop.');
+            toast.error('Please enter a valid price within the range.');
             setCropValue('');
         } else {
             const postData = {
@@ -223,29 +133,30 @@ const Trade = () => {
                 userAddress: address,
                 userPhoneNum: userPhone
             };
-            try {
-                axios.post('https://asmart-9.onrender.com/v1/proposeCropPrice', postData)
-                    .then(response => {
-                        console.log('Response:', response.status);
-                        setSelectedState('');
-                        setSelectedDistrict('');
-                        setSelectedMarket('');
-                        setSelectedCrop('');
-                        setAddress('');
-                        setCropValue('');
-                        setUserPhone('');
-                        alert("Price proposed successfully!!");
-                    })
-            } catch (errr) {
-                alert(errr);
-            }
+            axios.post('https://asmart-9.onrender.com/v1/proposeCropPrice', postData)
+                .then(response => {
+                    console.log('Response:', response.status);
+                    setSelectedState('');
+                    setSelectedDistrict('');
+                    setSelectedMarket('');
+                    setSelectedCrop('');
+                    setAddress('');
+                    setCropValue('');
+                    setUserPhone('');
+                    toast.success('Price proposed successfully!');
+                })
+                .catch(error => {
+                    console.error('Error:', error.response.data);
+                    toast.error('Failed to propose price. Please try again.');
+                });
         }
-    }
+    };
+
     return (
         <div className='Trade-container'>
-            <ToastContainer/>
+            <ToastContainer />
             <h3 className='title'>🌱 Farmers: Nurturing the Earth's Pulse, Feeding the 🌍, Cultivating Tomorrow's 🌟.</h3>
-            <h4> Select your data parameters and send a request for the best crop at an unbeatable price.</h4>
+            <h4>Select your data parameters and send a request for the best crop at an unbeatable price.</h4>
             <div className="input-container">
                 <div className="select-container">
                     <label htmlFor="state">Select State:</label>
@@ -274,8 +185,6 @@ const Trade = () => {
                         ))}
                     </select>
                 </div>
-
-                {/* Added select drop down for crops */}
                 <div className="select-container">
                     <label htmlFor="crop">Select Crop:</label>
                     <select id="crop" value={selectedCrop} onChange={handleCropChange}>
@@ -290,54 +199,51 @@ const Trade = () => {
             {selectedState === '' || selectedDistrict === '' || selectedMarket === '' || selectedCrop === '' ? (
                 <div>Please select your state, district, market and crop.</div>
             ) : (
-                <>
-
-                    <div className="filtered-records-container">
-                        <h2 className='trade-output-heading'> Your Selected Crop is -- {selectedCrop}</h2>
-                        {/*                            
-                            {filteredRecords.map((record) => (   //use useeffectfor this
-                                        <>
-                                            {record.commodity===selectedCrop?setMinPrice(record.min_price):''}
-                                            <h3>{record.commodity}</h3>
-                                            <h3>{record.variety}</h3>
-                                            <h3>{record.min_price}</h3>
-                                            <h3>{record.max_price}</h3>
-                                            <h3>{record.arrival_date}</h3>
-                                            <h3>{record.grade}</h3>
-                                        </>
-                            ))} */}
-
-                        <h3> The Minimum Price = {minPrice} <br></br> The Maximum Price = {maxPrice}</h3>
-                        <form onSubmit={handleSubmitMongoDB}>
-                            <div className="cropUserInput">
-                                <div className="Trade-input-container">
-                                    <label className='Trade-input-label' htmlFor="numberInput">Enter your price (from {minPrice} to {maxPrice}):</label>
-                                    <input className='Trade-input' placeholder='Enter Price'
-                                        type="tel"
-                                        id="numberInput"
-                                        min={minPrice}
-                                        max={maxPrice}
-                                        value={cropValue}
-                                        onChange={handleCropValueChange}
-                                    // onKeyDown={(e) => {if (e.key === 'ArrowUp' || e.key === 'ArrowDown') e.preventDefault();}}
-                                    />
-                                </div>
-                                <div className="Trade-input-container">
-                                    <label htmlFor="userAddress">Enter your address:</label>
-                                    <input value={address} type="text" className='Trade-input' id="userAddress" onChange={handleAddressChange} placeholder='Your address...' />
-                                </div>
-
-                                <div className="Trade-input-container">
-                                    <label htmlFor="userPhone">Enter your phone number:</label>
-                                    <input value={userPhone} type="tel" className='Trade-input' id="userPhone" onChange={handlePhoneNumberChange} placeholder='Phone number...' />
-                                </div>
+                <div className="filtered-records-container">
+                    <h2 className='trade-output-heading'>Your Selected Crop is -- {selectedCrop}</h2>
+                    <h3>The Minimum Price = {minPrice}<br />The Maximum Price = {maxPrice}</h3>
+                    <form onSubmit={handleSubmitMongoDB}>
+                        <div className="cropUserInput">
+                            <div className="Trade-input-container">
+                                <label className='Trade-input-label' htmlFor="numberInput">Enter your price (from {minPrice} to {maxPrice}):</label>
+                                <input
+                                    className='Trade-input'
+                                    placeholder='Enter Price'
+                                    type="tel"
+                                    id="numberInput"
+                                    min={minPrice}
+                                    max={maxPrice}
+                                    value={cropValue}
+                                    onChange={handleCropValueChange}
+                                />
                             </div>
-                            <button className='Trade-button' type="submit">Send Request</button>
-                        </form>
-                    </div>
-                </>
+                            <div className="Trade-input-container">
+                                <label htmlFor="userAddress">Enter your address:</label>
+                                <input
+                                    value={address}
+                                    type="text"
+                                    className='Trade-input'
+                                    id="userAddress"
+                                    onChange={handleAddressChange}
+                                    placeholder='Your address...'
+                                />
+                            </div>
+                            <div className="Trade-input-container">
+                                <label htmlFor="userPhone">Enter your phone number:</label>
+                                <input
+                                    value={userPhone}
+                                    type="tel"
+                                    className='Trade-input'
+                                    id="userPhone"
+                                    onChange={handlePhoneNumberChange}
+                                    placeholder='Phone number...'
+                                />
+                            </div>
+                        </div>
+                        <button className='Trade-button' type="submit">Send Request</button>
+                    </form>
+                </div>
             )}
-        
         </div>
     );
 }

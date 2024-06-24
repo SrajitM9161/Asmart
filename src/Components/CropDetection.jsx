@@ -38,7 +38,8 @@ const CropDetection = () => {
       Rainfall: formData.Rainfall,
     };
     try {
-      const res = await axios.post('https://asmart-9.onrender.com/predict', formattedFormData);
+      // const res = await axios.post('https://asmart-9.onrender.com/predict', formattedFormData);
+      const res = await axios.post('https://localhost:3737/predict', formattedFormData);
       if (res.status === 200) {
         if (res.data.prediction) {
           setPrediction(res.data.prediction);

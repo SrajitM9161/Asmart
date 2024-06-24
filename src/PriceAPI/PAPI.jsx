@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import urlWithApiKey from '../projectApiKey/apiKey';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import '../CSS/Papi.css';
-
 
 const PAPI = () => {
     const [records, setRecords] = useState([]);
@@ -18,12 +19,17 @@ const PAPI = () => {
     useEffect(() => {
         axios.get(urlWithApiKey)
             .then(response => {
-                const data = response.data.records;
-                setRecords(data);
-                const uniqueStates = Array.from(new Set(data.map(record => record.state)));
-                setStates(uniqueStates);
+                if (response.status === 200) {
+                    const data = response.data.records;
+                    setRecords(data);
+                    console.log(data)
+                    const uniqueStates = Array.from(new Set(data.map(record => record.state)));
+                    setStates(uniqueStates);
+                } else {
+                    toast.error('Market is closed today. Come back tomorrow.');
+                }
             })
-            .catch(error => alert('Error fetching data:', error));
+            .catch(error => toast.error(' Market is closed today. Come back tomorrow.'));
     }, []);
 
     useEffect(() => {
@@ -72,6 +78,7 @@ const PAPI = () => {
 
     return (
         <div className='papi-container'>
+            <ToastContainer />
             <h3 className='Title'>🔍 Uncover Insights: Verify Correctness and Efficiency with Data.gov's Trusted Data! 🌟</h3>
             <h1 className='title'>Want to know the price?</h1>
             <div className="fill-opt">
