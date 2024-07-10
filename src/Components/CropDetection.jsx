@@ -28,34 +28,20 @@ const CropDetection = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    const formattedFormData = {
-      Nitrogen: formData.Nitrogen,
-      Phosphorus: formData.Phosphorus,
-      Potassium: formData.Potassium,
-      Temperature: formData.Temperature,
-      Humidity: formData.Humidity,
-      ph: formData.ph,
-      Rainfall: formData.Rainfall,
-    };
+    setError('');
+    setPrediction('');
+
     try {
-      // const res = await axios.post('https://asmart-9.onrender.com/predict', formattedFormData);
-      const res = await axios.post('https://localhost:3737/predict', formattedFormData);
-      if (res.status === 200) {
-        if (res.data.prediction) {
-          setPrediction(res.data.prediction);
-          setError('');
-        } else if (res.data.error) {
-          setError(res.data.error);
-          setPrediction('');
-        }
-      } else {
-        setError('Error predicting crop. Please try again.');
-      }
-    } catch (err) {
-      console.error('Error predicting crop:', err);
-      setError('Error predicting crop. Please try again.');
+      const response = await axios.post('https://anishkibkchodi.onrender.com/predict', formData);
+      console.log('response: ', response);
+      console.log('response.data: ', response.data);
+      console.log('response.data.pediction: ', response.data.prediction);
+      setPrediction(response.data.prediction);
+    } catch (error) {
+      setError('An error occurred while making the prediction. Please try again.');
+    } finally {
+      setLoading(false);
     }
-    setLoading(false);
   };
 
   return (
@@ -65,7 +51,6 @@ const CropDetection = () => {
         <form onSubmit={handleSubmit} className='crop-detection-form'>
           <div className='form-text1'>Fill the Details:</div>
           <div className="detail-form">
-            {/* Input fields */}
             <div className="detail-box">
               <label htmlFor="Nitrogen">Nitrogen:</label>
               <input
@@ -162,14 +147,13 @@ const CropDetection = () => {
           <input type="submit" id="submit" name="submit" value="RECOMMEND" className='prediction-btn' />
           <div className='form-text2'>Learn more about <a href='https://www.manage.gov.in/publications/farmerbook.pdf'>Harvesting</a></div>
         </form >
-        {/* Display prediction or error message */}
         <div className="prediction-output">
           <h1>Crop Recommended</h1>
           {loading ? (
             <LinearProgress />
           ) : (
             <>
-              {prediction && <h4 className='prediction-output-text'>The best crops for this season are: <br /><br /><h3 style={{fontStyle: 'italic'}}>{prediction}</h3></h4>}
+              {prediction && <span className='prediction-output-text'>The best crops for this season are: <br /><br /><h3 style={{fontStyle: 'italic'}}>{prediction}</h3></span>}
               {error && <p className="error">{error}</p>}
             </>
           )}

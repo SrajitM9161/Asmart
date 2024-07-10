@@ -25,7 +25,7 @@ const Trade = () => {
 
     useEffect(() => {
         const currentTime = new Date();
-        const currentHour = currentTime.getHours();
+       
        
     }, []);
 
