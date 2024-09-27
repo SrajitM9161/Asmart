@@ -10,39 +10,61 @@ const PAPI = () => {
     const [selectedState, setSelectedState] = useState("");
     const [selectedDistrict, setSelectedDistrict] = useState("");
     const [selectedMarket, setSelectedMarket] = useState("");
-
     const [filteredRecords, setFilteredRecords] = useState([]);
     const [states, setStates] = useState([]);
     const [districts, setDistricts] = useState([]);
     const [markets, setMarkets] = useState([]);
-
+    const [loading, setLoading] = useState(false); 
+    const [dataLoaded, setDataLoaded] = useState(false); 
+    
     useEffect(() => {
-        axios.get(urlWithApiKey)
-            .then(response => {
+        const fetchData = async () => {
+            try {
+                setLoading(true); 
+                const response = await axios.get(urlWithApiKey);
                 if (response.status === 200) {
                     const data = response.data.records;
                     setRecords(data);
-                    console.log(data)
+
                     const uniqueStates = Array.from(new Set(data.map(record => record.state)));
                     setStates(uniqueStates);
+
+                    toast.success('Data loaded successfully!', { autoClose: 3000 });
+                    setDataLoaded(true); 
                 } else {
-                    toast.error('Market is closed today. Come back tomorrow.');
+                    toast.error('Data could not be fetched.');
                 }
-            })
-            .catch(error => toast.error(' Market is closed today. Come back tomorrow.'));
-    }, []);
+            } catch (error) {
+                toast.error(`Error fetching data: ${error.message}`);
+            } finally {
+                setLoading(false); 
+            }
+        };
+
+        fetchData(); 
+    }, []); 
 
     useEffect(() => {
         if (selectedState) {
-            const uniqueDistricts = Array.from(new Set(records.filter(record => record.state === selectedState).map(record => record.district)));
+            const uniqueDistricts = Array.from(new Set(
+                records.filter(record => record.state === selectedState)
+                       .map(record => record.district)
+            ));
             setDistricts(uniqueDistricts);
+        } else {
+            setDistricts([]); 
         }
     }, [selectedState, records]);
 
     useEffect(() => {
         if (selectedState && selectedDistrict) {
-            const uniqueMarkets = Array.from(new Set(records.filter(record => record.state === selectedState && record.district === selectedDistrict).map(record => record.market)));
+            const uniqueMarkets = Array.from(new Set(
+                records.filter(record => record.state === selectedState && record.district === selectedDistrict)
+                       .map(record => record.market)
+            ));
             setMarkets(uniqueMarkets);
+        } else {
+            setMarkets([]); 
         }
     }, [selectedState, selectedDistrict, records]);
 
@@ -60,16 +82,15 @@ const PAPI = () => {
         setSelectedState(state);
         setSelectedDistrict("");
         setSelectedMarket("");
-        const uniqueDistricts = Array.from(new Set(records.filter(record => record.state === state).map(record => record.district)));
-        setDistricts(uniqueDistricts);
+        setDistricts([]);
+        setMarkets([]);
     };
 
     const handleDistrictChange = (event) => {
         const district = event.target.value;
         setSelectedDistrict(district);
         setSelectedMarket("");
-        const uniqueMarkets = Array.from(new Set(records.filter(record => record.state === selectedState && record.district === district).map(record => record.market)));
-        setMarkets(uniqueMarkets);
+        setMarkets([]);
     };
 
     const handleMarketChange = (event) => {
@@ -91,7 +112,7 @@ const PAPI = () => {
                     </select>
                 </div>
                 <div className="select-container">
-                    <select id="district" value={selectedDistrict} onChange={handleDistrictChange}>
+                    <select id="district" value={selectedDistrict} onChange={handleDistrictChange} disabled={!selectedState}>
                         <option value="">District</option>
                         {districts.map((district, index) => (
                             <option key={index} value={district}>{district}</option>
@@ -99,7 +120,7 @@ const PAPI = () => {
                     </select>
                 </div>
                 <div className="select-container">
-                    <select id="market" value={selectedMarket} onChange={handleMarketChange}>
+                    <select id="market" value={selectedMarket} onChange={handleMarketChange} disabled={!selectedDistrict}>
                         <option value="">Market</option>
                         {markets.map((market, index) => (
                             <option key={index} value={market}>{market}</option>
@@ -108,40 +129,54 @@ const PAPI = () => {
                 </div>
             </div>
             <hr />
-            {selectedState === "" || selectedDistrict === "" || selectedMarket === "" ? (
-                <div className='papi-text'>Please select your state, district, and market.</div>
+            {loading ? (
+                <div className="loading-message">
+                    <p>🔍 Fetching the latest data from India's official government source. Please wait...</p>
+                </div>
             ) : (
                 <>
-                    {filteredRecords.length > 0 ? (
-                        <div className="Price-filtered-records-container">
-                            <h2>Filtered Records:</h2>
-                            <table id="records-table">
-                                <thead>
-                                    <tr>
-                                        <th>Commodity</th>
-                                        <th>Variety</th>
-                                        <th>Min Price</th>
-                                        <th>Max Price</th>
-                                        <th>Arrival Date</th>
-                                        <th>Grade</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {filteredRecords.map((record, index) => (
-                                        <tr key={index}>
-                                            <td>{record.commodity}</td>
-                                            <td>{record.variety}</td>
-                                            <td>{record.min_price}</td>
-                                            <td>{record.max_price}</td>
-                                            <td>{record.arrival_date}</td>
-                                            <td>{record.grade}</td>
-                                        </tr>
-                                    ))}
-                                </tbody>
-                            </table>
-                        </div>
+                    {!dataLoaded ? (
+                        <div className='papi-text'>Loading data, please wait...</div>
                     ) : (
-                        <div className='not-found'>No records found for the selected filters.</div>
+                        <>
+                            {selectedState === "" || selectedDistrict === "" || selectedMarket === "" ? (
+                                <div className='papi-text'>Please select your state, district, and market.</div>
+                            ) : (
+                                <>
+                                    {filteredRecords.length > 0 ? (
+                                        <div className="Price-filtered-records-container">
+                                            <h2>Filtered Records:</h2>
+                                            <table id="records-table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Commodity</th>
+                                                        <th>Variety</th>
+                                                        <th>Min Price</th>
+                                                        <th>Max Price</th>
+                                                        <th>Arrival Date</th>
+                                                        <th>Grade</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    {filteredRecords.map((record, index) => (
+                                                        <tr key={index}>
+                                                            <td>{record.commodity}</td>
+                                                            <td>{record.variety}</td>
+                                                            <td>{record.min_price}</td>
+                                                            <td>{record.max_price}</td>
+                                                            <td>{record.arrival_date}</td>
+                                                            <td>{record.grade}</td>
+                                                        </tr>
+                                                    ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    ) : (
+                                        <div className='not-found'>No records found for the selected filters.</div>
+                                    )}
+                                </>
+                            )}
+                        </>
                     )}
                 </>
             )}

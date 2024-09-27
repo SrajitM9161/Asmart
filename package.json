@@ -29,8 +29,11 @@
     "react-3d-icons": "^1.0.2",
     "react-autosuggest": "^10.1.0",
     "react-dom": "^18.2.0",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^5.0.1",
+    "react-loader-spinner": "^6.1.6",
     "react-router-dom": "^6.21.3",
+    "react-spinners": "^0.14.1",
     "react-toastify": "^10.0.5"
   },
   "devDependencies": {

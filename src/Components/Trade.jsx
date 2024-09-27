@@ -3,8 +3,8 @@ import React, { useEffect, useState } from 'react';
 import '../CSS/Trade.css';
 import urlWithApiKey from '../projectApiKey/apiKey';
 import { ToastContainer, toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import { auth } from '../Firebase/config';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Trade = () => {
     const [records, setRecords] = useState([]);
@@ -22,25 +22,34 @@ const Trade = () => {
     const [cropValue, setCropValue] = useState('');
     const [address, setAddress] = useState('');
     const [userPhone, setUserPhone] = useState('');
+    const [loading, setLoading] = useState(false);  // Loading state
 
     useEffect(() => {
-        const currentTime = new Date();
-       
-       
-    }, []);
+        const fetchData = async () => {
+            try {
+                setLoading(true);  // Start loading
+                toast.loading('Loading data...');  // Show loading toast
+                const response = await axios.get(urlWithApiKey);
+                if (response.status === 200) {
+                    const data = response.data.records;
+                    setRecords(data);
 
-    useEffect(() => {
-        axios.get(urlWithApiKey)
-            .then(response => {
-                const data = response.data.records;
-                setRecords(data);
-                const uniqueStates = Array.from(new Set(data.map(record => record.state)));
-                setStates(uniqueStates);
-            })
-            .catch(error => {
-                console.error('Error fetching data:', error);
-                toast.error('Hey user please come later because Market is closed');
-            });
+                    const uniqueStates = Array.from(new Set(data.map(record => record.state)));
+                    setStates(uniqueStates);
+
+                    toast.success('Data loaded successfully!');
+                } else {
+                    toast.error('Failed to load data.');
+                }
+            } catch (error) {
+                toast.error(`Error fetching data: ${error.message}`);
+            } finally {
+                setLoading(false);  // End loading
+                toast.dismiss();  // Dismiss loading toast
+            }
+        };
+
+        fetchData();
     }, []);
 
     useEffect(() => {
@@ -94,9 +103,6 @@ const Trade = () => {
         setSelectedCrop('');
     };
 
-    const recordsMap = new Map();
-    filteredRecords.forEach(record => recordsMap.set(record.commodity, record));
-
     const handleCropChange = (event) => {
         const cropSel = event.target.value;
         setSelectedCrop(cropSel);
@@ -135,7 +141,6 @@ const Trade = () => {
             };
             axios.post('https://asmart-9.onrender.com/v1/proposeCropPrice', postData)
                 .then(response => {
-                    console.log('Response:', response.status);
                     setSelectedState('');
                     setSelectedDistrict('');
                     setSelectedMarket('');
@@ -146,7 +151,6 @@ const Trade = () => {
                     toast.success('Price proposed successfully!');
                 })
                 .catch(error => {
-                    console.error('Error:', error.response.data);
                     toast.error('Failed to propose price. Please try again.');
                 });
         }
@@ -154,9 +158,10 @@ const Trade = () => {
 
     return (
         <div className='Trade-container'>
-            <ToastContainer />
+                <ToastContainer />
             <h3 className='title'>🌱 Farmers: Nurturing the Earth's Pulse, Feeding the 🌍, Cultivating Tomorrow's 🌟.</h3>
             <h4>Select your data parameters and send a request for the best crop at an unbeatable price.</h4>
+            
             <div className="input-container">
                 <div className="select-container">
                     <label htmlFor="state">Select State:</label>
@@ -195,9 +200,18 @@ const Trade = () => {
                     </select>
                 </div>
             </div>
+
+            {/* Loading message */}
+            {loading && (
+                <div className="loading-message">
+                    <p>🔍 Fetching the latest data from India's official government source. Please wait...</p>
+                </div>
+            )}
+
             <hr />
+
             {selectedState === '' || selectedDistrict === '' || selectedMarket === '' || selectedCrop === '' ? (
-                <div>Please select your state, district, market and crop.</div>
+                <div>Please select your state, district, market, and crop.</div>
             ) : (
                 <div className="filtered-records-container">
                     <h2 className='trade-output-heading'>Your Selected Crop is -- {selectedCrop}</h2>
@@ -216,36 +230,30 @@ const Trade = () => {
                                     value={cropValue}
                                     onChange={handleCropValueChange}
                                 />
-                            </div>
-                            <div className="Trade-input-container">
-                                <label htmlFor="userAddress">Enter your address:</label>
                                 <input
-                                    value={address}
+                                    className='Trade-input'
+                                    placeholder='Enter Address'
                                     type="text"
-                                    className='Trade-input'
-                                    id="userAddress"
+                                    value={address}
                                     onChange={handleAddressChange}
-                                    placeholder='Your address...'
+                                />
+                                <input
+                                    className='Trade-input'
+                                    placeholder='Enter Phone Number'
+                                    type="tel"
+                                    value={userPhone}
+                                    onChange={handlePhoneNumberChange}
                                 />
                             </div>
-                            <div className="Trade-input-container">
-                                <label htmlFor="userPhone">Enter your phone number:</label>
-                                <input
-                                    value={userPhone}
-                                    type="tel"
-                                    className='Trade-input'
-                                    id="userPhone"
-                                    onChange={handlePhoneNumberChange}
-                                    placeholder='Phone number...'
-                                />
+                            <div className='form-btn'>
+                                <button className='trade-propose-button' type="submit">Propose Price</button>
                             </div>
                         </div>
-                        <button className='Trade-button' type="submit">Send Request</button>
                     </form>
                 </div>
             )}
         </div>
     );
-}
+};
 
 export default Trade;
