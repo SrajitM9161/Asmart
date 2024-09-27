@@ -106,10 +106,22 @@ const Trade = () => {
     const handleCropChange = (event) => {
         const cropSel = event.target.value;
         setSelectedCrop(cropSel);
-        const matchedRecord = recordsMap.get(cropSel);
+
+        // Find the first matching record
+        const matchedRecord = records.find(record => 
+            record.state === selectedState && 
+            record.district === selectedDistrict && 
+            record.market === selectedMarket && 
+            record.commodity === cropSel
+        );
+
+        // Update min and max price if a match is found
         if (matchedRecord) {
             setMinPrice(matchedRecord.min_price);
             setMaxPrice(matchedRecord.max_price);
+        } else {
+            setMinPrice(0);
+            setMaxPrice(0);
         }
     };
 
@@ -158,7 +170,7 @@ const Trade = () => {
 
     return (
         <div className='Trade-container'>
-                <ToastContainer />
+            <ToastContainer />
             <h3 className='title'>🌱 Farmers: Nurturing the Earth's Pulse, Feeding the 🌍, Cultivating Tomorrow's 🌟.</h3>
             <h4>Select your data parameters and send a request for the best crop at an unbeatable price.</h4>
             
@@ -201,7 +213,6 @@ const Trade = () => {
                 </div>
             </div>
 
-           
             {loading && (
                 <div className="loading-message">
                     <p>🔍 Fetching the latest data from India's official government source. Please wait...</p>
@@ -222,33 +233,35 @@ const Trade = () => {
                                 <label className='Trade-input-label' htmlFor="numberInput">Enter your price (from {minPrice} to {maxPrice}):</label>
                                 <input
                                     className='Trade-input'
-                                    placeholder='Enter Price'
-                                    type="tel"
+                                    placeholder='Enter Crop Price'
+                                    type="number"
                                     id="numberInput"
-                                    min={minPrice}
-                                    max={maxPrice}
                                     value={cropValue}
                                     onChange={handleCropValueChange}
                                 />
+                            </div>
+                            <div className="Trade-input-container">
+                                <label className='Trade-input-label' htmlFor="numberInput">Enter Your Address:</label>
                                 <input
                                     className='Trade-input'
-                                    placeholder='Enter Address'
+                                    placeholder='Enter your Address'
                                     type="text"
                                     value={address}
                                     onChange={handleAddressChange}
                                 />
+                            </div>
+                            <div className="Trade-input-container">
+                                <label className='Trade-input-label' htmlFor="phoneInput">Enter Your Phone Number:</label>
                                 <input
                                     className='Trade-input'
-                                    placeholder='Enter Phone Number'
+                                    placeholder='Enter your Phone Number'
                                     type="tel"
                                     value={userPhone}
                                     onChange={handlePhoneNumberChange}
                                 />
                             </div>
-                            <div className='form-btn'>
-                                <button className='Trade-button' type="submit">Propose Price</button>
-                            </div>
                         </div>
+                        <button className='Trade-button ' type="submit">Propose Price</button>
                     </form>
                 </div>
             )}
