@@ -201,7 +201,7 @@ const Trade = () => {
                 </div>
             </div>
 
-            {/* Loading message */}
+           
             {loading && (
                 <div className="loading-message">
                     <p>🔍 Fetching the latest data from India's official government source. Please wait...</p>
@@ -246,7 +246,7 @@ const Trade = () => {
                                 />
                             </div>
                             <div className='form-btn'>
-                                <button className='trade-propose-button' type="submit">Propose Price</button>
+                                <button className='Trade-button' type="submit">Propose Price</button>
                             </div>
                         </div>
                     </form>
